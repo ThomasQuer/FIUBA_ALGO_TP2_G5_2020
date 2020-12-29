@@ -136,11 +136,10 @@ def ver_ultimos_posts(token):
     print(lista_de_posts_json)
 
 def main():
-    token =  "EAADBGgWWrIABAOnh9tn83v9oCMh3fZAIE4PDiDyQZBxxZBQEo6m3ZCzt4iJVYCpabBi7SWZCcmDVPXORil96mQT1k6NfO2GJP0hmkXBBJ4goVUc1ZBOgOhI2nZAZAfJfgZBkGXfNpMAXtj70ZAQnjJtWTGajFL9bjZAKDtBWqLaR4Rnt0KuNZAAqzmqRO1omtWLAzzY5TbjMWlscsG7Y70256lUH"
+    token =  "EAADBGgWWrIABADOQhGZBzhq1LGcNNBYvISGX16eZA74rlu0Ns8oZB14W3mu7WnvgEzJBfUckMlZCrO7Akhumbf3YvKyuWIsA344JjZArX8ya6Q67l6Wgt0TcpU3jY3ZApmgH7MKjkBNDLgZAPiJJDUjgRblr0eo43WcVZAhZAtZAJ5wFLvJaZC4kI0C2QHhol7lRWi4YoWq1SCCZAAZDZD"
     graph = facebook.GraphAPI(token)
-    #ver_posts(token)
-    obtener_nombre_usuario(token)
+    ver_ultimos_posts(token)
 
 if __name__ == "__main__":
     main()
-
+#hola
