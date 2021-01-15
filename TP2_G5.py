@@ -42,11 +42,6 @@ def dar_like_posteo(token, id_posteo):
     else:
         print("Hubo un problema, intente nuevamente.")
 
-    #print(json.dumps(putlike, indent = 4))
-    ##tira error:
-    ##facebook.GraphAPIError: (#3) Publishing likes through the API is only available for page access tokens
-    ##facebook.GraphAPIError: (#2) Service temporarily unavailable
-
 def leer_posteo(id_usuario):
     """
     PRE:
