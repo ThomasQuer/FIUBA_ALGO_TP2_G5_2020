@@ -34,9 +34,14 @@ def dar_like_posteo(token, id_posteo):
     POST:
         genera un like en el posteo enviado
     """
-    ##opcion 1 tira error
+    #con token de pagina desde app empresarial
     ##ej: putlike = graph.put_like(object_id = id_posteo) # id_posteo = USERID_POSTID
-    #putlike = graph.put_like(object_id ="101662381858155_101493071875086") 
+    darlike = graph.put_like(object_id ="105249781540470_106764151389033")
+    if darlike:
+        print("Se ha dado like al posteo.")
+    else:
+        print("Hubo un problema, intente nuevamente.")
+
     #print(json.dumps(putlike, indent = 4))
     ##tira error:
     ##facebook.GraphAPIError: (#3) Publishing likes through the API is only available for page access tokens
@@ -50,29 +55,26 @@ def leer_posteo(id_usuario):
         Solicita id del posteo e imprime el mensaje del posteo seleccionado
     """
     id_posteo = input('Ingrese el id del posteo: ')
-    identificador = str(id_usuario + '_' + id_posteo)
+    identificador = str(str(id_usuario) + '_' + id_posteo)
     #token utilizado el de app comercial #id = 'USERID_POSTID' #ej: identificador = 101662381858155_101493071875086
     posteo = graph.get_object(id = identificador, fields ='message, attachments{description}') 
     print(posteo['message'])
     
-
-def subir_posteo(token):
+def subir_posteo(id_pagina):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        id pagina debe ser un string
     POST:
-        permite escribir un texto y lo publica
+        permite escribir un texto y lo publica en una pagina
     """
-    ##opcion 1 con error
-    #mensaje = input('Ingrese el mensaje del posteo: ')
-    #posteo = graph.put_object(parent_object ="me", connection_name ="feed", message = mensaje) 
-    #print(json.dumps(posteo, indent = 4)) 
-    ##tira error:
-    '''facebook.GraphAPIError: (#200) If posting to a group, requires app being installed in the group, and \
-          either publish_to_groups permission with user token, or both pages_read_engagement \
-          and pages_manage_posts permission with page token; If posting to a page, \
-          requires both pages_read_engagement and pages_manage_posts as an admin with \
-          sufficient administrative permission'''
+    #con token de pagina desde app empresarial
+    mensaje = input('Ingrese el mensaje del posteo: ')
+    #posteo = graph.put_object(parent_object = id_pagina, connection_name ="feed", message = mensaje)
+    posteo = graph.put_object(parent_object ="105249781540470", connection_name ="feed", message = mensaje)
+    if posteo:
+        print("Su posteo número: " +  posteo['id'] + " ha sido publicado.")
+    else:
+        print("Hubo un problema, intente nuevamente.")
 
 def subir_foto(token):
     """
@@ -184,13 +186,13 @@ def ver_ultimos_posts(token):
 def main():
     #token: ver de hacer funcion para seleccion de empresarial o consumidor o pagina..
     #empreserial
-    token = 'EAAPQlFICfVYBAONyy5cBcqpzZCEQBpIjdGJk1Vx2UsDVlXi8WYGY6MvMTNjablhOSAkfOUDhUjJwumEkj6hZA5xtZAdYBevTZAcKC9Ox55elkEJerSL1xpcjMTQPLsEN5dKLHuNRGgGlXcDl0UsZBGqqAJsCnMTUSZAiwzZABJZClcaPvtmXb5oa1eYJVbHQTcqQCQR8wpGcsxvbGVoIzSyZA1h14vP54Vp0ykU0n8hMZCCQZDZD'
+    token = 'EAAPQlFICfVYBAD0cZCI5zrnjJNxkTGOZB0yvu9yhAE9RTLQJl45hmwNTEDAaKOt0i6bKI3o2Tuay4HVmTutpqO4ZAPn0dcw9O2jGFIClF6mJAgYpKZAnHkqaVoM5cFM8napmVBTpuNm62GaFdnHhWCTZCIeiiOmb5KRNGDshp8VZCisvn7LOryQQArnIR91Y8ZD'
     #consumidor
-    token = 'EAADBGgWWrIABAFjAiHvjZA3K8zZCcYLJf7tNYTKB19C2ZAqVCnxubL4KRLX0eXZCDYTSaWtc7rbMOSPZCD9ZCF06WMagWIZAef7YkTo896rF9I8voWIdJBmfzOm1fW52fChZArsRiq1ZCLrUMzbMJ9jvKIFGSPBQVGLEOt7QGiRZAkJZBQjZCDI1hpLfqCvjTQRDdTwGxAezYTYLMMZC24SLbPhZB1TYsjs3eBD02fzmduRxuIvAZDZD'
+    token = 'EAADBGgWWrIABAPGUyb39PfOjMAUvHK4TZAwx5LG62ZAE4eX1fz0GDDVsC6ZC0Wmsv6vhShLWz81HZCpj6anIVHC8bZC51WZAL0h9Iel6UEsfC2Db9zNYdhhDsNiZAv0pLMCufPkZAy3PorlXdsNwd8TPtHa2d0MeLlKTngCktd2ZB9ADVuKKhQObNtc43UjE3OEWFfu557aqBkkJcS09ex7KT88AODlWryh7dgLY8nLE56gZDZD'
     #empresaria - Crux bot pagina
-    token = 'EAAPQlFICfVYBAFdXNXmWpgRZBetJt2iUZCB3nwzqqbibAeEDnINOSAfc0vkDTCuG3f6SplrbU6n73nS2NV08Vjba5GoK4gZAYYMAC6W6cXzCwWm0KDJA8ePHxOo4ZAI8o7nPpoO35tEkVaYAMRnlGZA4Sm4RWU7uzciydgsSHpgZBRk0iV5Yeymt6wufVRQhBxq4t4lEwK6PMneFT3N3NAmTCjFziRwYHJebqBXiZBzPAZDZD'
+    token = 'EAAPQlFICfVYBAJZAZAFUpvjFUfLCtFjgDGnY9RPU9Cv3F9T5phetuZAAotIXNK9AZCdJu7yfbzxLAd9atNCUjHbNptuWqvhxZBbNqc1TbeUYFFZC1mtiUPS0EKcUGZB5FNIqZBa8tvWxVjPTYJfEiZBuHlDJ6IfGZCYnQDsvdQHnMQ1lFI3171hsr42hVEq0Klvn6pzeoHvQ4MwwZDZD'
     #Consumidor - Crux Bot Pagina
-    token = 'EAADBGgWWrIABADelCf8PksTvyxTOqVQkiwZBZBVohdDpOTZAm6Vw08B2CaiPnv8ZAoZAxRElUyV27m7t08pipRnUcBNHJz74xfIynlHEzjR1G3rDPCjxTsDxX2tLIUiUzJpAeSAVjt41t7szFPUSLp3FLHEftHCIE46ZCADX8eSef262QjZC9TH40qUMABqPpFWZBojnDWiXshayPJnLKJisAUKtoXZAdduTV5iPxSqsPRQZDZD'
+    token = 'EAADBGgWWrIABAPAD23afpNqdRQKDEi8L5G0P91aMR2peBGg492WSmDNzGblQ9xLPYN5E9Xvu2PZA03id63y5TmQuI6DZCvZAZBz3OjzzoFCZBASehoCM8jWuXgUfWspXJ1OWwRhoa2uIgayAos0EyfeMf0vP07pEMzwveh1ZCtV6MY9Ph25i4DPHsUYSmESVEZD'
     
     graph = facebook.GraphAPI(token)
 
