@@ -1,114 +1,211 @@
+"""
+Para limpiar el aprendizaje previo del bot.
+
+bot = ChatBot("Crux")
+bot.storage.drop()
+
+"""
+
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
-chat = ChatBot("Crux")
+bot = ChatBot(
+    'Crux',
+    storage_adapter='chatterbot.storage.SQLStorageAdapter',
+    database_uri='sqlite:///database.sqlite3'
+)
 
 
-saludos1 = ["Hola","¡Hola!, ¿En qué puedo ayudarte?"]
+bot = ChatBot(
+    'Crux',
+    storage_adapter = "chatterbot.storage.SQLStorageAdapter",
+    logic_adapters = [
+        {
+            'import_path': "chatterbot.logic.BestMatch",
+            "default_response": "Lo siento, no entendí tu pregunta.",
+            'maximum_similarity_threshold': 0.90
+        }
+    ]
+)
 
-saludos2 = ["Buenas", "¿Cómo va?, ¿En qué puedo ayudarte?"]
 
-saludos3 = ["Crux", "Justo acá, ¿En qué te ayudo?"]
+trainer = ListTrainer(bot)
 
-saludos4 = ["Gracias", "Un placer haberte ayudado."]
+trainer.train([
+    "Hola",
+    "¡Hola!, ¿En qué puedo ayudarte?",
+    "¿Qué tal el clima?",
+    "Con mucha humedad como es regular, un clásico ¿No es verdad?"
+    ])
 
+trainer.train([
+    "Buenas", 
+    "¿Cómo va?, ¿En qué puedo ayudarte?",
+    "¿Qué tal el clima?",
+    "Lamentablemente no tengo acceso a esa información. "
+    "Sin embargo puedo decirte como está el dólar.",
+    "¿Cómo está el dólar?",
+    "En alza, compra ahora. Compra bajo, vende alto.",
+    "Gracias por la información",
+    "Un placer ser de ayuda."
+    ])
 
+trainer.train([
+    "Crux", 
+    "Justo acá, ¿En qué te ayudo?"
+    ])
 
-solicitar_amistad = ["Quiero agregar un amigo.", "Muy bien, te ayudaré en eso. Primero ingresemos a tu cuenta y luego lo buscamos."]
+trainer.train([
+    "Gracias", 
+    "Un placer haberte ayudado.",
+    "Gracias, Crux",
+    "No es nada, ¡Que tengas un buen día!",
+    "Muchas gracias"
+    "Para servirte."
+    ])
 
-seguir_usuario = ["Quiero seguir una cuenta.", "Fantástico, ingresemos a tu cuenta y busquémoslo."]
+trainer.train([
+    "Quiero agregar un amigo.", 
+    "Muy bien, te ayudaré en eso. Primero ingresemos a tu cuenta y luego lo buscamos."
+    ])
 
-subir_posteo_ig = ["Quiero agregar un nuevo posteo", "¡Genial! ¿Dónde queres hacerlo?", "En Instagram",
-    "Eso es estupendo, primero debemos ingresar a tu cuenta de Instagram."]
+trainer.train([
+    "Quiero seguir una cuenta.", 
+    "Fantástico, ingresemos a tu cuenta y busquémoslo."
+    ])
 
-comentar_ig = ["Quiero comentar una publicación", 
+trainer.train([
+    "Quiero agregar un nuevo posteo", 
+    "¡Genial! ¿Dónde queres hacerlo?", 
+    "En Instagram",
+    "Eso es estupendo, primero debemos ingresar a tu cuenta de Instagram."
+    ])
+
+trainer.train([
+    "Quiero comentar una publicación", 
     "Es bueno estar activo, primero necesito saber en qué aplicación lo querés hacer.",
-    "En instagram","Excelente, allá vamos."]
+    "En instagram",
+    "Excelente, allá vamos."
+    ])
 
-foto_perfil_ig = ["Necesito actualizar mi foto de perfil","Decime la aplicación y te diré qué hacer.",
-    "Instagram", "Entremos a tu cuenta."]
+trainer.train([
+    "Necesito actualizar mi foto de perfil",
+    "Decime la aplicación y te diré qué hacer.",
+    "Instagram", 
+    "Entremos a tu cuenta."
+    ])
 
-seguidores_ig = ["¿Puedo ver mis seguidores?", "¡Por supuesto que sí! ¿Qué aplicación?", "Instagram",
-    "Vayamos allá."]
+trainer.train([
+    "¿Puedo ver mis seguidores?", 
+    "¡Por supuesto que sí! ¿Qué aplicación?", 
+    "Instagram",
+    "Vayamos allá."
+    ])
 
-buscar_ig = ["Quiero buscar a alguien", 
-    "Por supuesto pero ¿En dónde? Las opciones son ilimitadas. Bromeo, sólo son dos. ¿Instagram o Facebook?",
-    "Instagram","Okey dokey."]
+trainer.train([
+    "Quiero buscar a alguien", 
+    "Por supuesto pero ¿En dónde? Las opciones son ilimitadas. "
+    "Bromeo, sólo son dos. ¿Instagram o Facebook?",
+    "Instagram",
+    "Okey dokey."
+    ])
 
-cuenta_ig = ["Ya estoy en mi cuenta de Instagram", "Eso es muy cierto, tan solo te estaba probando."]
+trainer.train([
+    "Ya estoy en mi cuenta de Instagram", 
+    "Eso es muy cierto, tan solo te estaba probando."
+    "Ya estoy ahí.", 
+    "Muy cierto, el día de hoy me encuentro algo distraido.",
+    "Estoy acá.",
+    "Okay, me atrapaste. Error mío."
+    "Ya estoy en mi cuenta de Facebook", 
+    "Uh, mala mía."
+    ])
 
-cuenta = ["Ya estoy ahí.", "Muy cierto, el día de hoy me encuentro algo distraido."]
+trainer.train([
+    "Actualizar mis datos", 
+    "¿Facebook o Instagram?", 
+    "Instagram", 
+    "Yendo para allá."
+    ])
 
-actualizar_ig = ["Actualizar mis datos", "¿Facebook o Instagram?", "Instagram", "Yendo para allá."]
+trainer.train([
+    "Quiero enviar un DM", 
+    "¿Aplicación?", 
+    "Instagram"
+    ])
 
-mensaje_ig = ["Quiero enviar un DM", "¿Aplicación?", "Instagram"]
+trainer.train([
+    "Quiero agregar un nuevo posteo", 
+    "Claro, ¿El posteo será en Instagram o Facebook?",
+    "Facebook", 
+    "Genial, entonces primero necesito que entres a tu cuenta de Facebook."
+    ])
 
+trainer.train([
+    "Me gustaría comentar una publicación", 
+    "Sensacional, ¿Vamos a Facebook o Instagram?", 
+    "A Facebook", 
+    "Vayamos allá."
+    ])
 
+trainer.train([
+    "Tengo que cambiar mi foto de perfil", 
+    "Un requerimiento es el nombre de la aplicación.",
+    "Facebook", 
+    "¡Ah! Muy buena elección. Redirigiendo a tu cuenta de Facebook."
+    ])
 
-subir_posteo_fb = ["Quiero agregar un nuevo posteo", "Claro, ¿El posteo será en Instagram o Facebook?",
-    "Facebook", "Genial, entonces primero necesito que entres a tu cuenta de Facebook."]
+trainer.train([
+    "Quiero ver mis seguidores", 
+    "Claro que sí pero ¿En qué aplicación?", 
+    "Facebook",
+    "¿No es algo raro tener seguidores que son amigos? " 
+    "Mark tiene unas ideas curiosas. Entra a tu cuenta, por favor."
+    ])
 
-comentar_fb = ["Me gustaría comentar una publicación", "Sensacional, ¿Vamos a Facebook o Instagram?", 
-    "A Facebook", "Vayamos allá."]
+trainer.train([
+    "Necesito ver mi lista de amigos", 
+    "¡Ah! No necesito preguntar qué app esta vez. Punto para mí. Como sea, vayamos allí."
+    ])
 
-foto_perfil_fb = ["Tengo que cambiar mi foto de perfil", "Un requerimiento es el nombre de la aplicación.",
-    "Facebook", "¡Ah! Muy buena elección. Redirigiendo a tu cuenta de Facebook."]
+trainer.train([
+    "Quiero buscar a alguien", 
+    "Dime la aplicación y te diré tus opciones.", 
+    "Facebook", 
+    "Ahí vamos."
+    ])
 
-seguidores_fb = ["Quiero ver mis seguidores", "Claro que sí pero ¿En qué aplicación?", "Facebook",
-    "¿No es algo raro tener seguidores que son amigos? Mark tiene unas ideas curiosas. Entra a tu cuenta, por favor."]
+trainer.train([
+    "Actualizar datos de perfil", 
+    "Es bueno mantenerse al día. ¿Dónde actualizamos?",
+    "Facebook",
+    "¡Genial!"
+    ])
 
-listar_amigos = ["Necesito ver mi lista de amigos", 
-    "¡Ah! No necesito preguntar qué app esta vez. Punto para mí. Como sea, vayamos allí."]
-
-buscar_fb = ["Quiero buscar a alguien", "Dime la aplicación y te diré tus opciones.", "Facebook", "Ahí vamos."]
-
-cuenta_fb = ["Ya estoy en mi cuenta de Facebook", "Uh, mala mía."]
-
-actualizar_fb = ["Actualizar datos de perfil", "Es bueno mantenerse al día. ¿Dónde actualizamos?",
-    "Facebook","¡Genial!"]
-
-mensaje_fb = ["Quisiera mandar un mensaje", 
+trainer.train([
+    "Quisiera mandar un mensaje", 
     "Tus deseos son mis ordenes ¿O tus ordenes mis deseos? Como sea, decime la aplicación.",
-    "Facebook", "Marchando hacia Facebook."]
+    "Facebook", 
+    "Marchando hacia Facebook."
+    ])
 
-mensaje_fb2 = ["Quiero escribir un mensaje", "¡Yo te ayudaré! ¿En dónde?", "Facebook",
-    "Estupendo."]
+trainer.train([
+    "Quiero escribir un mensaje", 
+    "¡Yo te ayudaré! ¿En dónde?", 
+    "Facebook",
+    "Estupendo."
+    ])
 
+bandera = 1
+nombre = input("Ingrese su nombre: ")
 
-trainer = ListTrainer(chat)
-
-trainer.train(saludos1)
-trainer.train(saludos2)
-trainer.train(saludos3)
-trainer.train(saludos4)
-
-trainer.train(solicitar_amistad)
-trainer.train(seguir_usuario)
-trainer.train(subir_posteo_ig)
-trainer.train(comentar_ig)
-trainer.train(foto_perfil_ig)
-trainer.train(seguidores_ig)
-trainer.train(buscar_ig)
-trainer.train(cuenta_ig)
-trainer.train(actualizar_ig)
-trainer.train(mensaje_ig)
-trainer.train(cuenta)
-
-trainer.train(subir_posteo_fb)
-trainer.train(comentar_fb)
-trainer.train(foto_perfil_fb)
-trainer.train(seguidores_fb)
-trainer.train(listar_amigos)
-trainer.train(buscar_fb)
-trainer.train(cuenta_fb)
-trainer.train(actualizar_fb)
-trainer.train(mensaje_fb)
-trainer.train(mensaje_fb2)
-
-while True: # Hasta que se me ocurra una forma de no usarlo. Esto es sólo para verificar
-    peticion = input(">>> ")   # que las respuestas correspondan con las entradas.
-    respuesta = chat.get_response(peticion)
-    print("Bot: ",str(respuesta))
+while bandera == 1:
+    peticion = input(nombre + ": ")
+    if peticion != "":
+        respuesta = bot.get_response(peticion)
+        print("Crux: ",str(respuesta))
+    else:
+        bandera -= 1
   
 
     
