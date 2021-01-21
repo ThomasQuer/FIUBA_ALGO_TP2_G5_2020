@@ -38,7 +38,7 @@ def chatbot():
         "Hola",
         "¡Hola!, ¿En qué puedo ayudarte?",
         "¿Qué tal el clima?",
-        "Con mucha humedad como es regular, un clásico ¿No es verdad?"
+        "Con mucha humedad como es regular, un clásico ¿No es verdad?",
         "Buenas", 
         "¿Cómo va?, ¿En qué puedo ayudarte?",
         "¿Qué tal el clima?",
@@ -47,15 +47,19 @@ def chatbot():
         "¿Cómo está el dólar?",
         "En alza, compra ahora. Compra bajo, vende alto.",
         "Gracias por la información",
-        "Un placer ser de ayuda."
+        "Un placer ser de ayuda.",
         "Crux", 
-        "Justo acá, ¿En qué te ayudo?"
+        "Justo acá, ¿En qué te ayudo?",
         "Gracias", 
         "Un placer haberte ayudado.",
         "Gracias, Crux",
         "No es nada, ¡Que tengas un buen día!",
         "Muchas gracias",
-        "Para servirte."
+        "Para servirte.",
+        "Mil gracias",
+        "Estoy acá para cualquier ayuda que puedas necesitar.",
+        "Muchisimas gracias",
+        "Un placer."
     ])
 
     trainer.train([
@@ -71,7 +75,7 @@ def chatbot():
     trainer.train([
         "Quiero agregar un nuevo posteo", 
         "¡Genial! ¿Dónde queres hacerlo?", 
-        "En Instagram",
+        "En instagram",
         "Eso es estupendo, primero debemos ingresar a tu cuenta de Instagram."
     ])
 
@@ -106,11 +110,11 @@ def chatbot():
 
     trainer.train([
         "Ya estoy en mi cuenta de Instagram", 
-        "Eso es muy cierto, tan solo te estaba probando."
+        "Eso es muy cierto, tan solo te estaba probando.",
         "Ya estoy ahí.", 
         "Muy cierto, el día de hoy me encuentro algo distraido.",
         "Estoy acá.",
-        "Okay, me atrapaste. Error mío."
+        "Okay, me atrapaste. Error mío.",
         "Ya estoy en mi cuenta de Facebook", 
         "Uh, mala mía."
     ])
@@ -123,12 +127,6 @@ def chatbot():
     ])
 
     trainer.train([
-        "Quiero enviar un DM", 
-        "¿Aplicación?", 
-        "Instagram"
-    ])
-
-    trainer.train([
         "Quiero agregar un nuevo posteo", 
         "Claro, ¿El posteo será en Instagram o Facebook?",
         "Facebook", 
@@ -138,7 +136,7 @@ def chatbot():
     trainer.train([
         "Me gustaría comentar una publicación", 
         "Sensacional, ¿Vamos a Facebook o Instagram?", 
-        "A Facebook", 
+        "A facebook", 
         "Vayamos allá."
     ])
 
@@ -146,7 +144,11 @@ def chatbot():
         "Tengo que cambiar mi foto de perfil", 
         "Un requerimiento es el nombre de la aplicación.",
         "Facebook", 
-        "¡Ah! Muy buena elección. Redirigiendo a tu cuenta de Facebook."
+        "¡Ah! Muy buena elección. Redirigiendo a tu cuenta de Facebook.",
+        "Actualizar datos de perfil", 
+        "Es bueno mantenerse al día. ¿Dónde actualizamos?",
+        "Facebook",
+        "¡Genial!"
     ])
 
     trainer.train([
@@ -170,46 +172,46 @@ def chatbot():
     ])
 
     trainer.train([
-        "Actualizar datos de perfil", 
-        "Es bueno mantenerse al día. ¿Dónde actualizamos?",
-        "Facebook",
-        "¡Genial!"
-    ])
-
-    trainer.train([
         "Quisiera mandar un mensaje", 
         "Tus deseos son mis ordenes ¿O tus ordenes mis deseos? Como sea, decime la aplicación.",
         "Facebook", 
-        "Marchando hacia Facebook."
-    ])
-
-    trainer.train([
+        "Marchando hacia Facebook.",
         "Quiero escribir un mensaje", 
         "¡Yo te ayudaré! ¿En dónde?", 
         "Facebook",
-        "Estupendo."
+        "Estupendo.",
+        "Quiero enviar un DM", 
+        "¿Aplicación?", 
+        "Instagram"
     ])
-
+ 
     bandera = 1
-    nombre = input("Ingrese su nombre: ")
-
-    tiempo = time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime())
+    nombre = input("¿Cuál es tu nombre?: ")
 
     log("\nInicio nueva charla.")
 
     while bandera == 1:
         peticion = input(nombre + ": ")
-        log(tiempo + ", " + nombre + ', "' + peticion + '"')
+        log(
+            time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) + 
+            ", " + nombre + ', "' + peticion + '"'
+            )
 
         if (peticion.lower()).find("gracias") == -1:
-            respuesta = bot.get_response(peticion)
+            respuesta = bot.get_response((peticion.capitalize()))
             print("Crux: ",str(respuesta))
-            log(tiempo + ", Crux, " + '"' + str(respuesta) + '"')
+            log(
+                time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) + 
+                ", Crux, " + '"' + str(respuesta) + '"'
+                )
 
         else:
             respuesta = bot.get_response(peticion)
             print("Crux: ",str(respuesta))
-            log(tiempo + ", Crux, " + '"' + str(respuesta) + '"')
+            log(
+                time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) + 
+                ", Crux, " + '"' + str(respuesta) + '"'
+                )
             bandera -= 1
 
     log("Fin de la charla.")
@@ -218,6 +220,7 @@ def main():
     chatbot()
 
 main()
+
   
 
     
