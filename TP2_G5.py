@@ -1,7 +1,6 @@
 import json
 import facebook
 import requests
-import fbchat
 import re
 
 
@@ -18,22 +17,32 @@ def obtener_nombre_usuario(token):
         token
     )
     dicc_json = dicc.json()
+    visualizar_nombre_usuario(dicc_json)
     return (dicc_json)
 
+def visualizar_nombre_usuario(diccionario_nombres):
+    """
+    PRE:
+        Diccionario debe ser de la forma: {id: , nombre:}
+    POST:
+        visualiza el nombre y el id del usuario
+    """
+    print('El ID del usuario es:', diccionario_nombres['id'], 'y el nombre es:', diccionario_nombres['name'])
 
-def buscar_usuario(token, nombre_usuario):
+def buscar_usuario(graph, id_usuario):
     """
     PRE:
         token debe ser un string, la llave de acceso
-        nombre_usuario debe ser un string
+        id_usuario debe ser un entero 
     POST:
         devuelve el ID de un usuario como string
     """
+    user = graph.get_object(id=id_usuario, fields='name' )
+    print(user)
 
-    return usuario_ID
 
 
-def dar_like_posteo(token, id_posteo):
+def dar_like_posteo(graph, id_posteo):
     """
     PRE:
         token debe ser un string, la llave de acceso
@@ -53,7 +62,7 @@ def dar_like_posteo(token, id_posteo):
         print("Hubo un problema, intente nuevamente.")
 
 
-def leer_posteo(id_usuario):
+def leer_posteo(graph, id_usuario):
     """
     PRE:
        id_usuario debe ser un string con el id del usuario
@@ -70,7 +79,7 @@ def leer_posteo(id_usuario):
     print(posteo['message'])
 
 
-def subir_posteo(id_pagina):
+def subir_posteo(graph):
     """
     PRE:
         id pagina debe ser un string
@@ -165,15 +174,14 @@ def solicitar_amistad(token, usuario_id):
     """
     return
 
-
+"""
 def enviar_mensaje_usuario(nombre_usuario):
-    """
     PRE:
         nombre_usuario debe ser un string que indique el nombre de usuario
         de la cuenta de facebook.
     POST:
        envia un mensaje a usuario posteriormente ingresado.
-    """
+
     # seteo de variables para fbchat.Client (sino genera un error)
     fbchat._util.USER_AGENTS = [
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
@@ -196,7 +204,7 @@ def enviar_mensaje_usuario(nombre_usuario):
     else:
         print("Hubo un problema, intente nuevamente.")
 
-
+"""
 def actualizar_datos_perfil(token):
     """
     PRE:
@@ -226,16 +234,12 @@ def ver_ultimos_posts(token):
 def main():
     # token: ver de hacer funcion para seleccion de empresarial,
     # consumidor o pagina.
-    # empreserial
-    token = 'EAAPQlFICfVYBAEMbCXZB9v2ZBdZCV1zSgq0TPhjfMZCOTVk1cpkQ5QeS6jNQYKPBhgvDpREJnOd2ExZAFxLHmegs4JReRe1YyWYYjSSgJrI4KnAZCLxo6UaixwxZB69OBoKqXyX4iCm84L1Az4NvXA0znG7ZA7kdr0h78iCls4NvwpdiO82ZBm0x00o1LSjB3EzwZD'
-    # consumidor
-    token = 'EAADBGgWWrIABAI9KwhfVwWndDDbIG2Gm9CZA6YZAyYwZBwCZBvGcxB5H25jdNB5ZCDdZAf8Jj9c9jGZCtsrMRBOthW3FkJ8sHndiLtUQOZB0jnVerxCYDpT4jZArSyo8zKWOHwTmFjP0rc6pSQ79iUwLD0071QbJwlcVFKGVqbZA3LVN6CwtQAmZAYmMV0G8W4VVCsZD'
-    # empresaria - Crux bot pagina
-    token = 'EAAPQlFICfVYBAOnl5fsGKSZCQxn0N5YRTyR95PBKKda6z6ZC1Rcuv4JwcXBpKZBcM3qZBwkxHNrggSAtegCOOajEolt0HCVzjzq1OYroYAXg6iPUeV8Y0m6CoZBijKOaKZC5zE4hYR2WSfLdD2pNwITdY3Hffgdi31QtrT4MAvl4QomZCpv3qDfp4teACDjrcxZApdxYThLZCLQZDZD'
     # Consumidor - Crux Bot Pagina
-    token = 'EAADBGgWWrIABAACiUfnWUugQ8uwNabJblgkCEDHaZCeWaJkZAVnUIHCCqJiLLmZB13s4LYLKXVx8i7WQKJugRZAttkAHsNBYWkG9ZCnL0azOEck0BtOHO9wtZBZB7j1FPjnRbaSPuUQYYzCqCy9n4dZB4IY9m0VIGZCpNfSaGcFdqZCXwMG8QPC5bJQFoaxAMt9Ms37e4h7uWd8AZDZD'
-
-    graph = facebook.GraphAPI(token)
+    token_consumidor = 'EAADBGgWWrIABAIKATkayQRUZAS2nS7fZAMVzyuO5ZBSOoZC1YeXaTKOjXRWaH90ZC1ZBRyXGYQvJZBQboNypU4jZA1XGCHd7QiXMNYEWwKylHrDqhH1fSB9782uaaWILwAJn3WvsgphiIVpadnZA8H82pjNn5BnwldXH2IshvT3foKItz5ZBeKUIJvLbLZAgdCvsTZB0Kn9K8D7uDb3xbEnYGH5XTEahNHTrlpZBqse39bZAtuzgZDZD'
+    # empreserial
+    token_empresarial = 'EAAPQlFICfVYBAHpLSHBZC5K9MDZCkqs4lSXHSOgbIKE66kohaAZAgr98ZCFBtVCnFdhltEOQGzDXpXbQxYdsyqQc9y6Ulckye0S4WHzBtfx9wSPWiLmMJVYWHj4HPwg0MZCZBkbzZAlMetAID8sTfzUuDk23vReXCRgmQCzR3M9RUrxae9dmGnaZBETOof64OqQvdYBS1J5zXFGgqUHBWdv3uDzQdJ2MpZCiCdZASe1cesJwZDZD'
+    graph = facebook.GraphAPI(token_empresarial)
+    subir_posteo(graph)
 
 
 if __name__ == "__main__":
