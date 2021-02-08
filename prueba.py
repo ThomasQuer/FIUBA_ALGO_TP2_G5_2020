@@ -2,7 +2,6 @@
 import json
 from flask import Flask, request
 from bot import Bot
-import Crux
 
 PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBAJXtdLr7vc8gGNQ2VNKqRa50sk53MCfNFgYN2D3d9lAM2Y5Kxg79mlYHUg8fotiQBfv1yF54PtMhM0ZBTeKjZBzpZBHhGtXdi30ptMcAI4ilR6WJ7uiB7nQeuosbene2lbwXC8bNnb8ZBWwWSd8fz7p6WCxIYiOD9IaiPyyy'
 
