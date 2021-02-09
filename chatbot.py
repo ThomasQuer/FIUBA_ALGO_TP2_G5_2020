@@ -9,9 +9,9 @@ from chatterbot import ChatBot
 from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
-from chatterbot.trainers import ListTrainer
 
-PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBAJXtdLr7vc8gGNQ2VNKqRa50sk53MCfNFgYN2D3d9lAM2Y5Kxg79mlYHUg8fotiQBfv1yF54PtMhM0ZBTeKjZBzpZBHhGtXdi30ptMcAI4ilR6WJ7uiB7nQeuosbene2lbwXC8bNnb8ZBWwWSd8fz7p6WCxIYiOD9IaiPyyy'
+
+PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def webhook():
     POST: Se encarga de devolver un mensaje respuesta al usuario
         según el entrenamiento del bot a través del archivo de texto.
     """
-    
+
     if request.method == 'GET':
         token = request.args.get('hub.verify_token')
         challenge = request.args.get('hub.challenge')
@@ -34,11 +34,10 @@ def webhook():
         data = json.loads(request.data)
         messaging_events = data['entry'][0]['messaging']
         bot = Bot(PAGE_ACCESS_TOKEN)
-        
+
         chat = ChatBot(
             'Crux',
             read_only=True,
-            storage_adapter="chatterbot.storage.SQLStorageAdapter",
             logic_adapters=[
                 'chatterbot.logic.MathematicalEvaluation',
                 'chatterbot.logic.BestMatch',
@@ -51,7 +50,8 @@ def webhook():
                         response_selection.get_first_response
                     ),
                     "default_response": (
-                        "Lo siento, no entendí tu pregunta. ¿Podrías volver a intentarlo?"
+                        "Lo siento, no entendí tu pregunta. "
+                        "¿Podrías volver a intentarlo?"
                     ),
                     'maximum_similarity_threshold': 0.90
                 },
@@ -64,30 +64,19 @@ def webhook():
             ]
         )
 
-        directory = 'training_data'
-
-        # Entrenamiento del bot.
-
-        for filename in os.listdir(directory):
-            if filename.endswith(".txt"):
-                print('\n Chatbot training with '+os.path.join(directory, filename) + ' file')
-                training_data = open(os.path.join(directory, filename)).read().splitlines()
-                trainer = ListTrainer(chat)
-                trainer.train(training_data)
-        
         for message in messaging_events:
             user_id = message['sender']['id']
             text_input = message['message'].get('text')
-            
+
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
                 ", " + "Nombre_Usuario" + ', "' + str(text_input) + '"'
             )
-            
+
             response_text = chat.get_response(text_input)
             print('Message from user ID {} - {}'.format(user_id, text_input))
             bot.send_text_message(user_id, str(response_text))
-            
+
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
                 ", Crux, " + '"' + str(response_text) + '"'
@@ -110,3 +99,5 @@ def log(message):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+ 
