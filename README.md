@@ -46,7 +46,7 @@ Una vez descargado y descomprimido ir al cmd y buscar la carpeta en la que fue d
 Ejecutar chatbot.py
 Ir al link que aparece en la terminal: “Running on http:….” Volver al cmd y correr el siguiente comando:
 
-  $ ngrok http 5000 –bind-tls=true
+  $ ngrok http 5000 –bind-tls=true    (copiar el comando en forma manual)
 
 Copiar el link “Forwarding https:…..” Acceder al mismo.
 Los dos links deberían mostrar “400” 
