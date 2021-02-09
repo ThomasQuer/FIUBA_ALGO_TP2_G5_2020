@@ -26,28 +26,30 @@ Contiene el código correspondiente a la creación del chatbot 'Crux' e importa 
  Se necesita tener integrado Flask:
 
  Create an environment
-Create a project folder and a venv folder within: $ mkdir myproject $ cd myproject $ python3 -m venv venv
+  Create a project folder and a venv folder within: $ mkdir myproject $ cd myproject $ python3 -m venv venv
 
 On Windows: $ py -3 -m venv venv
-Activate the environment Before you work on your project, activate the corresponding environment: $ . venv/bin/activate
-venv\Scripts\activate Your shell prompt will change to show the name of the activated environment.
-Install Flask Within the activated environment, use the following command to install Flask: $ pip install Flask
+  Activate the environment Before you work on your project, activate the corresponding environment: $ . venv/bin/activate
+  
+  venv\Scripts\activate Your shell prompt will change to show the name of the activated environment.
+  
+  Install Flask Within the activated environment, use the following command to install Flask: $ pip install Flask
 
 "De Documentación de Flask"
 
 
  Se necesita descargar ngrok:
  
-Seguir instrucciones siguiente enlace. https://ngrok.com/download
+  Seguir instrucciones siguiente enlace. https://ngrok.com/download
 Es necesario la creación de una cuenta, así también como la conexión de la misma a través del cmd. Sin ella el link expirará pasadas dos horas de la creación. 
 Una vez descargado y descomprimido ir al cmd y buscar la carpeta en la que fue descomprimida, mantener abierto. 
 Ejecutar chatbot.py
 Ir al link que aparece en la terminal: “Running on http:….” Volver al cmd y correr el siguiente comando:
 
-$ ngrok http 5000 –bind-tls=true
+  $ ngrok http 5000 –bind-tls=true
 
 Copiar el link “Forwarding https:…..” Acceder al mismo.
 Los dos links deberían mostrar “400” 
 El link con terminación .ngrok.io será nuestro ‘Callback URL’ en Facebook developers. ‘Verify Token’ será 'cruxbot'.
 
-Problema encontrado: El link que ngrok otorga caduca una vez cerrada la terminal cmd. Al volver a abrirla y ejecutar chatboy.py se deberá volver a generar otro link ngrok (Volviendo a correr el comando ingresado arriba) que tendrá que ser modificado en la configuración de messenger en developers.facebook 'URL devolución de llamada'. De lo contrario chatbot.py no podrá devolver el mensaje respuesta al usuario.
+  Problema encontrado: El link que ngrok otorga caduca una vez cerrada la terminal cmd. Al volver a abrirla y ejecutar chatboy.py se deberá volver a generar otro link ngrok (Volviendo a correr el comando ingresado arriba) que tendrá que ser modificado en la configuración de messenger en developers.facebook 'URL devolución de llamada'. De lo contrario chatbot.py no podrá devolver el mensaje respuesta al usuario.
