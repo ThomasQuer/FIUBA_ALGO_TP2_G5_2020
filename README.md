@@ -1,4 +1,12 @@
-# Crux.py
+# training_data
+Momentáneamente contine un único archivo que consta sólo de saludos y ligera conversación. Falta ingresar archivo de acciones correspondientes a las funciones realizadas con la api de Facebook. Se debe ampliar aprendizaje con mayor cantidad de ejemplos de entrada-respuesta.
+
+
+# chatbot_training.py
+Se encarga de la creación y aprendizaje de 'Crux', debe ser el primero en ejecutarse.
+
+
+# Crux.py (Archivo para prueba de entrenamiento)
 Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubicados en la carpeta 'training_data'. No realiza una llamada a la api así que su salida es la propia terminal del compilador. La conversación realizada con el usuario se almacena en un archivo extensión .log con fecha y horario integrado. El programa finaliza al recibir una entrada con el string "gracias" en ella.
 
 
@@ -6,17 +14,11 @@ Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubic
 Crea la clase que le permitirá a la función webhook, mediante el acceso a través de la api, recibir el mensaje del usuario.
 
 
-# training_data
-Momentáneamente contine un único archivo que consta sólo de saludos y ligera conversación. Falta ingresar archivo de acciones correspondientes a las funciones realizadas con la api de Facebook. Se debe ampliar aprendizaje con mayor cantidad de ejemplos de entrada-respuesta.
-
-
 # chatbot.py
-Contiene el código correspondiente a la creación del chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
+Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
 
   La función webhook: 
-  Se encarga de recibir, procesar y enviar el mensaje respuesta, dentro de este, se crea y entrena a Crux.
-  
-  Problema encontrado: Crux no puede acceder a la opción default_response.
+  Se encarga de recibir, procesar y enviar el mensaje respuesta.
   
   La función log:
   Almacena la conversación entre el bot y el usuario. Falta integrar el nombre del usuario al archivo.log.
