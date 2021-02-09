@@ -1,4 +1,5 @@
 import os
+import time
 
 import json
 from flask import Flask, request
@@ -17,6 +18,11 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def webhook():
+    """
+    POST: Se encarga de devolver un mensaje respuesta al usuario
+        según el entrenamiento del bot a través del archivo de texto.
+    """
+    
     if request.method == 'GET':
         token = request.args.get('hub.verify_token')
         challenge = request.args.get('hub.challenge')
@@ -72,12 +78,34 @@ def webhook():
         for message in messaging_events:
             user_id = message['sender']['id']
             text_input = message['message'].get('text')
-            response = chat.get_response(text_input)
-            response_text = str(response)
+            
+            log(
+                time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
+                ", " + "Nombre_Usuario" + ', "' + str(text_input) + '"'
+            )
+            
+            response_text = chat.get_response(text_input)
             print('Message from user ID {} - {}'.format(user_id, text_input))
-            bot.send_text_message(user_id, response_text)
+            bot.send_text_message(user_id, str(response_text))
+            
+            log(
+                time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
+                ", Crux, " + '"' + str(response_text) + '"'
+            )
 
         return '200'
+
+
+def log(message):
+    """
+    PRE: "message" debe ser un string.
+
+    POST: Creación del archivo log si no existiese,
+        agrega la línea "message".
+    """
+
+    with open("archivo.log", "a") as ptroArchivo:
+        ptroArchivo.write(message + "\n")
 
 
 if __name__ == "__main__":
