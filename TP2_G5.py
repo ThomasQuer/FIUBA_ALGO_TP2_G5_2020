@@ -6,29 +6,34 @@ import requests
 def obtener_nombre_usuario(token):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
     POST:
-        Devuelve un diccionario con {id: id del usuario, nombre: nombre del usuario}
+        Devuelve un diccionario con {id: id del usuario,
+        nombre: nombre del usuario}
     """
-    dicc = requests.get("https://graph.facebook.com/v9.0/me?fields=id%2Cname&access_token="+token)
+    dicc = requests.get(
+        "https://graph.facebook.com/v9.0/me?fields=id%2Cname&access_token=" +
+        token
+    )
     dicc_json = dicc.json()
     return (dicc_json)
+
 
 def buscar_usuario(token, nombre_usuario):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
         nombre_usuario debe ser un string
     POST:
         devuelve el ID de un usuario como string
     """
-    
+
     return usuario_ID
 
 def dar_like_posteo():
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
         id_posteo debe ser un string con el id del posteo
     POST:
         genera un like en el posteo enviado
@@ -41,8 +46,10 @@ def dar_like_posteo():
     darlike = graph.put_like(object_id = id_posteo)
     if darlike:
         print("Se ha dado like al posteo.")
+
     else:
         print("Hubo un problema, intente nuevamente.")
+
 
 def leer_posteo(id_usuario):
     """
@@ -70,36 +77,42 @@ def subir_posteo():
     id_pagina = input('Ingrese el id de la página: ') #ej "105249781540470"
     posteo = graph.put_object(parent_object = id_pagina, connection_name ="feed", message = mensaje)
     if posteo:
-        print("Su posteo número: " +  posteo['id'] + " ha sido publicado.")
+        print("Su posteo número: " + posteo['id'] + " ha sido publicado.")
+
     else:
         print("Hubo un problema, intente nuevamente.")
+
 
 def subir_foto(token):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
     POST:
         solicita al usuario que indique la ubicación de una foto y la publica
     """
-    #opcion 1 error:
+    # opcion 1 error:
     # camino_imagen = input("Ingrese la ubicación de la imagen: ")
     # archivo = open(camino_imagen, 'rb')
-    #graph.put_photo(archivo, 'me/photos')
-    #facebook.GraphAPIError: (#200) This endpoint is deprecated since the required permission publish_actions is deprecated
+    # graph.put_photo(archivo, 'me/photos')
+    # facebook.GraphAPIError: (#200) This endpoint is deprecated since
+    # the required permission publish_actions is deprecated
+
 
 def actualizar_posteo(token, id_posteo):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
         id_posteo debe ser un string con el id del posteo
     POST:
-        Devuelve un diccionario con todas las caracteristicas del posteo seleccionado
+        Devuelve un diccionario con todas las caracteristicas
+        del posteo seleccionado
     """
+
 
 def listar_seguidores(token):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
     POST:
         Devuelve una lista con los seguidores
     """
@@ -112,23 +125,29 @@ def listar_amigos():
     """
     token, graph = seleccion_token("consumidor_cuenta")
     amigos = graph.get_object('me', fields='friends')
-    #Excepcion: Solo los amigos que han instalado esta aplicación estarán en la versión 2.0 o superior de la API.
-    print("La cantidad de amigos que tienes es: " + str(amigos['friends']['summary']['total_count']))
-    #ver como obtener nombre de los que tienen la api
+    # Excepcion: Solo los amigos que han instalado esta aplicación estarán
+    # en la versión 2.0 o superior de la API.
+    print(
+        "La cantidad de amigos que tienes es: " +
+        str(amigos['friends']['summary']['total_count'])
+    )
+    # ver como obtener nombre de los que tienen la api
+
 
 def seguir_usuario(token, usuario_id):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
         usuario_id debe ser un string que indique el id del usuario
     POST:
         sigue al usuario seleccionado
     """
 
+
 def solicitar_amistad(token, usuario_id):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
         usuario_id debe ser un string que indique el id del usuario
     POST:
         solicita amistad al usuario seleccionado
@@ -143,41 +162,52 @@ def enviar_mensaje_usuario(nombre_usuario):
     #POST:
      #  envia un mensaje a usuario posteriormente ingresado.
     """
-    #seteo de variables para fbchat.Client (sino genera un error)
-    fbchat._util.USER_AGENTS    = ["Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"]
-    fbchat._state.FB_DTSG_REGEX = re.compile(r'"name":"fb_dtsg","value":"(.*?)"')
+    # seteo de variables para fbchat.Client (sino genera un error)
+    fbchat._util.USER_AGENTS = [
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36"
+    ]
+    fbchat._state.FB_DTSG_REGEX = re.compile(
+        r'"name":"fb_dtsg","value":"(.*?)"'
+    )
 
-    #nombre_usuario = 'crux.bot.1'
+    # nombre_usuario = 'crux.bot.1'
     contraseña = input("Ingrese su contraseña: ")
     cliente = fbchat.Client(nombre_usuario, contraseña)
     nombre_amigo = input("Ingrese el nombre y apellido del amigo: ")
     amigos = cliente.searchForUsers(nombre_amigo)
-    amigo = amigos[0] 
-    mensaje = input("Ingrese el mensaje a enviar: ") 
-    envio = cliente.sendMessage(mensaje, thread_id=amigo.uid) 
+    amigo = amigos[0]
+    mensaje = input("Ingrese el mensaje a enviar: ")
+    envio = cliente.sendMessage(mensaje, thread_id=amigo.uid)
     if envio:
-        print("Se ha enviado correctamente el mensaje.") 
+        print("Se ha enviado correctamente el mensaje.")
+
     else:
         print("Hubo un problema, intente nuevamente.")
 """
 
+
 def actualizar_datos_perfil(token):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
     POST:
-        Muestra los atributos que pueden ser moodificados, permite al usuario seleccionar uno
-        y modificarlo. 
+        Muestra los atributos que pueden ser moodificados,
+        permite al usuario seleccionar uno
+        y modificarlo.
     """
+
 
 def ver_ultimos_posts(token):
     """
     PRE:
-        token debe ser un string, la llave de acceso 
+        token debe ser un string, la llave de acceso
     POST:
         muestra tus últimos posts
     """
-    lista_de_posts = requests.get("https://graph.facebook.com/v9.0/me?fields=posts&access_token="+token)
+    lista_de_posts = requests.get(
+        "https://graph.facebook.com/v9.0/me?fields=posts&access_token=" +
+        token
+    )
     lista_de_posts_json = lista_de_posts.json()
     print(lista_de_posts_json)
 
@@ -235,5 +265,7 @@ def generar_token_pagina():
 def main():
 
 
+
 if __name__ == "__main__":
     main()
+
