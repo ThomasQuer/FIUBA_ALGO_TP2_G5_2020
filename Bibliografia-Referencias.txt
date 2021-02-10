@@ -4,3 +4,7 @@ Tutorial de uso de Facebook Graph API: https://towardsdatascience.com/how-to-use
 modulo python-facebook-api: https://pypi.org/project/python-facebook-api/
 https://medium.com/analytics-vidhya/facebook-graph-api-python-3c8bab8a5a2a
 https://www.geeksforgeeks.org/facebook-api-set-2/?ref=rp
+
+tokens https://developers.facebook.com/docs/pages/access-tokens/
+
+alternativa de encontrar id https://www.labnol.org/internet/find-facebook-page-id-profile/6909/
