@@ -8,3 +8,5 @@ https://www.geeksforgeeks.org/facebook-api-set-2/?ref=rp
 tokens https://developers.facebook.com/docs/pages/access-tokens/
 
 alternativa de encontrar id https://www.labnol.org/internet/find-facebook-page-id-profile/6909/
+
+posteo de foto https://stackoverflow.com/questions/34393982/upload-image-to-facebook-using-the-python-api#
