@@ -11,10 +11,8 @@ def obtener_nombre_usuario(token):
         Devuelve un diccionario con {id: id del usuario,
         nombre: nombre del usuario}
     """
-    dicc = requests.get(
-        "https://graph.facebook.com/v9.0/me?fields=id%2Cname&access_token=" +
-        token
-    )
+    token=seleccion_token('consumidor_cuenta', token_solo=True)
+    dicc = requests.get(f"https://graph.facebook.com/v9.0/me?fields=id%2Cname&access_token={token}")
     dicc_json = dicc.json()
     return (dicc_json)
 
@@ -90,13 +88,13 @@ def subir_foto(token):
     POST:
         solicita al usuario que indique la ubicación de una foto y la publica
     """
-    # opcion 1 error:
-    # camino_imagen = input("Ingrese la ubicación de la imagen: ")
-    # archivo = open(camino_imagen, 'rb')
-    # graph.put_photo(archivo, 'me/photos')
+    # opcion 1 error: "C:\GIT\ALGOI\crux.jpg"
+    #token, graph = seleccion_token("consumidor_cuenta")
+    #camino_imagen = input("Ingrese la ubicación de la imagen: ")
+    #archivo = open(camino_imagen, 'rb')
+    #graph.put_photo(archivo, 'me/photos')
     # facebook.GraphAPIError: (#200) This endpoint is deprecated since
     # the required permission publish_actions is deprecated
-
 
 def actualizar_posteo(token, id_posteo):
     """
@@ -197,23 +195,26 @@ def actualizar_datos_perfil(token):
     """
 
 
-def ver_ultimos_posts(token):
+def ver_ultimos_posts():
     """
     PRE:
-        token debe ser un string, la llave de acceso
     POST:
-        muestra tus últimos posts
+        muestra tus últimos tres posts.
     """
-    lista_de_posts = requests.get(
-        "https://graph.facebook.com/v9.0/me?fields=posts&access_token=" +
-        token
-    )
+    token=seleccion_token('consumidor_pagina', token_solo=True)
+    lista_de_posts = requests.get(f"https://graph.facebook.com/v9.0/me?fields=posts&access_token={token}")
     lista_de_posts_json = lista_de_posts.json()
-    print(lista_de_posts_json)
+    print(lista_de_posts_json['posts'])
+    contador = 0
+    for i in lista_de_posts_json['posts']['data']:
+        contador+=1
+        if contador <= 3:
+            print(i)
 
-def seleccion_token(tipo_token):
+def seleccion_token(tipo_token, token_solo = False):
     """
     PRE: necesita un string indicando el tipo de token a devolver. Opciones: empresarial_cuenta, empresarial_pagina, consumidor_cuenta, consumidor_pagina.
+    Si token_solo se especifica True, solo devuelve el token.
     POST: devuelve un string con el token segun tipo de aplicación y el objeto graph del tipo 'facebook.GraphAPI'.
     """
     if tipo_token == "empresarial_cuenta":
@@ -223,10 +224,12 @@ def seleccion_token(tipo_token):
     elif tipo_token == "consumidor_cuenta":
         token = 'EAADBGgWWrIABAOCBW4316mP4J3D5iqZAcEQ48wKBrftnoOFnb452KPO4wdlfpN5MAWu8h3DGyPdqZCLMjUgH9A6nJLZASMnnxQZCHwELkM47biGgc3WJbkXLZAxOMknHblPJLvnZCsgwtfqoagitQaY0gHpRoxDbp2o56xWDZBDNwZDZD'
     elif tipo_token == "consumidor_pagina":
-        token = 'EAADBGgWWrIABAPAD23afpNqdRQKDEi8L5G0P91aMR2peBGg492WSmDNzGblQ9xLPYN5E9Xvu2PZA03id63y5TmQuI6DZCvZAZBz3OjzzoFCZBASehoCM8jWuXgUfWspXJ1OWwRhoa2uIgayAos0EyfeMf0vP07pEMzwveh1ZCtV6MY9Ph25i4DPHsUYSmESVEZD'
+        token = 'EAADBGgWWrIABAMXUFHlijThaTleKULX1yFhNPZCilHQipyAzdMZBir14OI8C981hIsyvpiidZBR3FpZAC2XoAkZAgvZCaf4UFf2PsfG3bzKBYPGWEZAnS9JhIKKZCZAYNL1TaEzjJbOzucssde7kny7zz1pttFZBtX9oUbobmT9GRRfwZDZD'
     graph = facebook.GraphAPI(token)
-    return token, graph
-
+    if token_solo == False:
+        return token, graph
+    else:
+        return token
 #de uso interno
 def generar_token_extendido():
     """PRE
