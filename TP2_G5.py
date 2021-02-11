@@ -67,7 +67,7 @@ def subir_posteo():
     """
     PRE:
     POST:
-        permite escribir un texto y lo publica en una pagina
+        permite escribir un texto y lo publica en una pagina la cual se solicita el id al usuario.
     """
     #Se selecciona token de pagina desde una app empresarial y se utiliza api
     token, graph = seleccion_token("empresarial_pagina")
@@ -80,21 +80,23 @@ def subir_posteo():
     else:
         print("Hubo un problema, intente nuevamente.")
 
-
-def subir_foto(token):
+def subir_foto():
     """
-    PRE:
-        token debe ser un string, la llave de acceso
+    PRE: requiere de función selección_token()
     POST:
-        solicita al usuario que indique la ubicación de una foto y la publica
-    """
-    # opcion 1 error: "C:\GIT\ALGOI\crux.jpg"
-    #token, graph = seleccion_token("consumidor_cuenta")
-    #camino_imagen = input("Ingrese la ubicación de la imagen: ")
-    #archivo = open(camino_imagen, 'rb')
-    #graph.put_photo(archivo, 'me/photos')
-    # facebook.GraphAPIError: (#200) This endpoint is deprecated since
-    # the required permission publish_actions is deprecated
+        Solicita al usuario que indique la ubicación de una foto y la publica en la pagina de Crux.
+    """    
+    #El posteo foto es en la pagina de Crux: 
+    #con token empresa_cuenta y consumidor_cuenta : facebook.GraphAPIError: (#200) This endpoint is deprecated since the required permission publish_actions is deprecated
+    #con token consumidor_pagina : facebook.GraphAPIError: (#200) The permission(s) pages_read_engagement,pages_manage_posts are not available. It could because either they are deprecated or need to be approved by App Review.
+    token, graph = seleccion_token("empresarial_pagina")
+    camino_imagen = input("Ingrese la ubicación de la imagen, por ej. C:\imagen.jpg :") #ej "C:\GIT\ALGOI\crux.jpg"
+    mensaje=input("Ingrese el mensaje de la foto: ")
+    posteo = graph.put_photo(image=open(camino_imagen,'rb'), message=mensaje)
+    if posteo:
+        print(f"Su posteo fue exitoso. Id {posteo['id']}, ID posteo {posteo['post_id']}")
+    else:
+        print("Hubo un problema, intente nuevamente.")
 
 def actualizar_posteo(token, id_posteo):
     """
@@ -105,7 +107,6 @@ def actualizar_posteo(token, id_posteo):
         Devuelve un diccionario con todas las caracteristicas
         del posteo seleccionado
     """
-
 
 def listar_seguidores(token):
     """
@@ -152,7 +153,7 @@ def solicitar_amistad(token, usuario_id):
     """
     return
 
-"""#momentaneamente desactivado
+"""#momentaneamente desactivado por cuestiones de permisos de Facebook API
 def enviar_mensaje_usuario(nombre_usuario):
     """
    # PRE:
@@ -183,7 +184,6 @@ def enviar_mensaje_usuario(nombre_usuario):
         print("Hubo un problema, intente nuevamente.")
 """
 
-
 def actualizar_datos_perfil(token):
     """
     PRE:
@@ -193,8 +193,6 @@ def actualizar_datos_perfil(token):
         permite al usuario seleccionar uno
         y modificarlo.
     """
-
-
 def ver_ultimos_posts():
     """
     PRE:
@@ -215,7 +213,7 @@ def seleccion_token(tipo_token, token_solo = False):
     """
     PRE: necesita un string indicando el tipo de token a devolver. Opciones: empresarial_cuenta, empresarial_pagina, consumidor_cuenta, consumidor_pagina.
     Si token_solo se especifica True, solo devuelve el token.
-    POST: devuelve un string con el token segun tipo de aplicación y el objeto graph del tipo 'facebook.GraphAPI'.
+    POST: devuelve un string con el token segun tipo de aplicación y el objeto graph del tipo 'facebook.GraphAPI' cuando token_solo = False.
     """
     if tipo_token == "empresarial_cuenta":
         token = 'EAAPQlFICfVYBAHQTuF4SA84zmZBZCWZAdJH7qIeAvL6JRYY2gZCsIwwhua67QHtVYJFCOpa3sLpN2lwkwddmIqy8ZCfejRaeReWcExZCtDzaGW6ifnWrwXlD1DZAS36T5pyYSRujfLxNcNDZBZBeA9PqZAVOzHGNkeYvAhbSKUvDsbyAZDZD'
@@ -230,6 +228,7 @@ def seleccion_token(tipo_token, token_solo = False):
         return token, graph
     else:
         return token
+
 #de uso interno
 def generar_token_extendido():
     """PRE
