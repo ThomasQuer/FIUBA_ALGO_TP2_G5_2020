@@ -142,7 +142,6 @@ def listar_amigos():
     )
     # ver como obtener nombre de los que tienen la api
 
-
 def seguir_usuario(token, usuario_id):
     """
     PRE:
