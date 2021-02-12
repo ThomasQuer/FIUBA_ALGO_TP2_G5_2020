@@ -39,29 +39,31 @@ def dar_like_posteo():
     #Se selecciona token de pagina desde una app empresarial y se utiliza api
     token, graph = seleccion_token("empresarial_pagina")
     #Se solicita id del posteo a dar like
-    id_posteo = input("Ingrese el id del posteo utilizando la forma 'IDUSUARIO_IDPOSTEO': ") #ej: 105249781540470_106764151389033
+    identificador = generar_identificador #ej: 105249781540470_106764151389033
     #Se utiliza la api para dar like al posteo y se imprime por pantalla el resultado
-    darlike = graph.put_like(object_id = id_posteo)
+    darlike = graph.put_like(object_id = identificador)
     if darlike:
         print("Se ha dado like al posteo.")
 
     else:
         print("Hubo un problema, intente nuevamente.")
 
-
-def leer_posteo(id_usuario):
+def leer_posteo(devolver_identificador=False):
     """
     PRE:
-       
+       Necesita función generar_identificador() y seleccion_token(). 
+       Si se requiere devuelva identificador del posteo ingresar devolver_identificador=True.
     POST:
-        Solicita id del posteo e imprime el mensaje del posteo seleccionado
+        Solicita id del posteo e imprime el mensaje del posteo seleccionado.
+        Si devolver_identificador=True devuelde el identificador del objeto leido.
     """
     token, graph = seleccion_token("consumidor_cuenta")
-    id_usuario = input('Ingrese el id del usuario: ') # 101662381858155
-    id_posteo = input('Ingrese el id del posteo: ') #ej 101493071875086
-    identificador = str(id_usuario + '_' + id_posteo)
+    identificador = generar_identificador()
     posteo = graph.get_object(id = identificador, fields ='message, attachments{description}') 
+    print("El mensaje del posteo es: ")
     print(posteo['message'])
+    if devolver_identificador == True:
+        return identificador
     
 def subir_posteo():
     """
@@ -90,7 +92,7 @@ def subir_foto():
     #con token empresa_cuenta y consumidor_cuenta : facebook.GraphAPIError: (#200) This endpoint is deprecated since the required permission publish_actions is deprecated
     #con token consumidor_pagina : facebook.GraphAPIError: (#200) The permission(s) pages_read_engagement,pages_manage_posts are not available. It could because either they are deprecated or need to be approved by App Review.
     token, graph = seleccion_token("empresarial_pagina")
-    camino_imagen = input("Ingrese la ubicación de la imagen, por ej. C:\imagen.jpg :") #ej "C:\GIT\ALGOI\crux.jpg"
+    camino_imagen = input("Ingrese la ubicación de la imagen, por ej. C:\imagen.jpg : ") #ej "C:\GIT\ALGOI\crux.jpg"
     mensaje=input("Ingrese el mensaje de la foto: ")
     posteo = graph.put_photo(image=open(camino_imagen,'rb'), message=mensaje)
     if posteo:
@@ -98,7 +100,7 @@ def subir_foto():
     else:
         print("Hubo un problema, intente nuevamente.")
 
-def actualizar_posteo(token, id_posteo):
+def actualizar_posteo():
     """
     PRE:
         token debe ser un string, la llave de acceso
@@ -107,6 +109,14 @@ def actualizar_posteo(token, id_posteo):
         Devuelve un diccionario con todas las caracteristicas
         del posteo seleccionado
     """
+    token, graph = seleccion_token("empresarial_pagina")
+    identificador = leer_posteo(devolver_identificador=True)
+    mensaje = input('Ingrese el mensaje para modificar al posteo: ')
+    actualizacion = graph.put_object(parent_object=identificador, connection_name='', message=mensaje)
+    if actualizacion:
+        print("Modificación exitosa!")
+    else:
+    print("Hubo un problema, intente nuevamente.")
 
 def listar_seguidores(token):
     """
@@ -193,6 +203,7 @@ def actualizar_datos_perfil(token):
         permite al usuario seleccionar uno
         y modificarlo.
     """
+
 def ver_ultimos_posts():
     """
     PRE:
@@ -209,6 +220,19 @@ def ver_ultimos_posts():
         if contador <= 3:
             print(i)
 
+def comentar_objeto():
+    """PRE: utiliza función generar_identificador().
+    POST: permite escribir un comentario en el objeto cuyo id es solicitado al usuario."""
+    token, graph = seleccion_token("empresarial_pagina")
+    mensaje =  input("Ingrese el mensaje a comentar: ")
+    identificador = generar_identificador()
+    comentario = graph.put_object(parent_object=identificador, connection_name='comments', message=mensaje)
+    if comentario:
+        print("Su comentario ha sido exitoso. ID:" + comentario['id'])
+    else:
+        print("Ha ocurrido un error, intente nuevamente.")
+        
+#funciones para otras funciones
 def seleccion_token(tipo_token, token_solo = False):
     """
     PRE: necesita un string indicando el tipo de token a devolver. Opciones: empresarial_cuenta, empresarial_pagina, consumidor_cuenta, consumidor_pagina.
@@ -228,6 +252,20 @@ def seleccion_token(tipo_token, token_solo = False):
         return token, graph
     else:
         return token
+
+def generar_identificador():
+    """PRE:
+    POST: devuelve el identificador del objeto en cuestion como IDUSUARIO_IDPOST."""
+    print("Ingrese el identificador del objeto.")
+    eleccion = int(input("Seleccione: \n 1 - Si va a ingresar IDUSER e IDPOST por separado. \n 2 - Si va a ingresarlo junto como IDUSER_IDPOST.\n"))
+    if eleccion == 1:
+        id_usuario = input('Ingrese el id del usuario: ') # 101662381858155
+        id_posteo = input('Ingrese el id del posteo: ') #ej 101493071875086
+        identificador = str(id_usuario + '_' + id_posteo)
+    elif eleccion ==2:
+        identificador = input('Ingrese el IDUSER_IDPOST: ')
+    
+    return identificador
 
 #de uso interno
 def generar_token_extendido():
