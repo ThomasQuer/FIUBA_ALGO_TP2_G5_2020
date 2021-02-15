@@ -16,7 +16,6 @@ def obtener_nombre_usuario(token):
     dicc_json = dicc.json()
     return (dicc_json)
 
-
 def buscar_usuario(token, nombre_usuario):
     """
     PRE:
@@ -25,8 +24,7 @@ def buscar_usuario(token, nombre_usuario):
     POST:
         devuelve el ID de un usuario como string
     """
-
-    return usuario_ID
+        return usuario_ID
 
 def dar_like_posteo():
     """
@@ -125,6 +123,11 @@ def listar_seguidores(token):
     POST:
         Devuelve una lista con los seguidores
     """
+    #token, graph = seleccion_token("consumidor_pagina")
+    #ver = requests.get(f"https://graph.facebook.com/v9.0/105249781540470?fields=fan_count&access_token={token}")
+    #token, graph = seleccion_token("consumidor_cuenta")
+    #seguidores = graph.get_object('me', fields='subscribers')
+
     return lista_seguidores
 
 def listar_amigos():
@@ -141,6 +144,7 @@ def listar_amigos():
         str(amigos['friends']['summary']['total_count'])
     )
     # ver como obtener nombre de los que tienen la api
+    #lista_amigos = request.get(f"https://graph.facebook.com/v9.0/{friend-list-id}?access_token={token}")
 
 def seguir_usuario(token, usuario_id):
     """
@@ -160,7 +164,6 @@ def solicitar_amistad(token, usuario_id):
     POST:
         solicita amistad al usuario seleccionado
     """
-    return
 
 """#momentaneamente desactivado por cuestiones de permisos de Facebook API
 def enviar_mensaje_usuario(nombre_usuario):
