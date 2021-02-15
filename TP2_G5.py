@@ -205,22 +205,22 @@ def actualizar_datos_perfil(token):
         permite al usuario seleccionar uno
         y modificarlo.
     """
-
 def ver_ultimos_posts():
     """
     PRE:
     POST:
         muestra tus últimos tres posts.
     """
-    token=seleccion_token('consumidor_pagina', token_solo=True)
+    auxiliar = []
+    token = seleccion_token('consumidor_pagina', token_solo=True)
     lista_de_posts = requests.get(f"https://graph.facebook.com/v9.0/me?fields=posts&access_token={token}")
     lista_de_posts_json = lista_de_posts.json()
-    print(lista_de_posts_json['posts'])
+    # print(lista_de_posts_json['posts'])
     contador = 0
     for i in lista_de_posts_json['posts']['data']:
-        contador+=1
+        contador += 1
         if contador <= 3:
-            print(i)
+            auxiliar.append(i)
 
 def comentar_objeto():
     """PRE: utiliza función generar_identificador().
