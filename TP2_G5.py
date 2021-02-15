@@ -193,22 +193,34 @@ def actualizar_datos_perfil(token):
         permite al usuario seleccionar uno
         y modificarlo.
     """
+              
+              
 def ver_ultimos_posts():
     """
     PRE:
     POST:
         muestra tus últimos tres posts.
     """
-    token=seleccion_token('consumidor_pagina', token_solo=True)
+    auxiliar = []
+    token = seleccion_token('consumidor_pagina', token_solo=True)
     lista_de_posts = requests.get(f"https://graph.facebook.com/v9.0/me?fields=posts&access_token={token}")
     lista_de_posts_json = lista_de_posts.json()
-    print(lista_de_posts_json['posts'])
+    # print(lista_de_posts_json['posts'])
     contador = 0
     for i in lista_de_posts_json['posts']['data']:
-        contador+=1
+        contador += 1
         if contador <= 3:
-            print(i)
+            auxiliar.append(i)
 
+    posteos = (
+        auxiliar[0]['created_time'] + "\n" + auxiliar[0]['message'] +
+        "\n\n" + auxiliar[1]['created_time'] + "\n" + auxiliar[1]['message'] +
+        "\n\n" + auxiliar[2]['created_time'] + "\n" + auxiliar[2]['message']
+    )
+
+    return posteos
+
+              
 def seleccion_token(tipo_token, token_solo = False):
     """
     PRE: necesita un string indicando el tipo de token a devolver. Opciones: empresarial_cuenta, empresarial_pagina, consumidor_cuenta, consumidor_pagina.
