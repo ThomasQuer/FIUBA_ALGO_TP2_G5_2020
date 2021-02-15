@@ -10,7 +10,7 @@ from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
 
-from TP2_G5 import ver_ultimos_posts
+from TP2_G5 import ver_ultimos_posts, obtener_nombre_usuario
 
 PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
 
@@ -62,16 +62,19 @@ def webhook():
             ]
         )
 
+        aux = obtener_nombre_usuario()
+        name = aux['name']
+
         for message in messaging_events:
             user_id = message['sender']['id']
             text_input = message['message'].get('text')
 
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
-                ", " + "Nombre_Usuario" + ', "' + str(text_input) + '"'
+                ", " + name + ', "' + str(text_input) + '"'
             )
 
-            if ((str(text_input)).lower).find("post") != -1:
+            if (str(text_input)).find("post") != -1:
                 response_text = ver_ultimos_posts()
                 print('Message from user ID {} - {}'.format(user_id, text_input))
                 bot.send_text_message(user_id, str(response_text))
