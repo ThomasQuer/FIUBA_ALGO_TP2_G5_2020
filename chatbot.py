@@ -10,6 +10,7 @@ from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
 
+from TP2_G5 import ver_ultimos_posts
 
 PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
 
@@ -36,11 +37,8 @@ def webhook():
         bot = Bot(PAGE_ACCESS_TOKEN)
 
         chat = ChatBot(
-            'Crux',
-            read_only=True,
+            'Crux', read_only=True,
             logic_adapters=[
-                'chatterbot.logic.MathematicalEvaluation',
-                'chatterbot.logic.BestMatch',
                 {
                     'import_path': "chatterbot.logic.BestMatch",
                     "statement_comparison_function": (
@@ -73,9 +71,17 @@ def webhook():
                 ", " + "Nombre_Usuario" + ', "' + str(text_input) + '"'
             )
 
-            response_text = chat.get_response(text_input)
-            print('Message from user ID {} - {}'.format(user_id, text_input))
-            bot.send_text_message(user_id, str(response_text))
+            if ((str(text_input)).lower).find("post") != -1:
+                response_text = ver_ultimos_posts()
+                print('Message from user ID {} - {}'.format(user_id, text_input))
+                bot.send_text_message(user_id, str(response_text))
+
+            # Acá se irían agregando las opciones para el llamado a funciones
+            
+            else:
+                response_text = chat.get_response(text_input)
+                print('Message from user ID {} - {}'.format(user_id, text_input))
+                bot.send_text_message(user_id, str(response_text))
 
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
