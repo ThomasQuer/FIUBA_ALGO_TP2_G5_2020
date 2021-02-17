@@ -218,7 +218,7 @@ def actualizar_datos_perfil(token):
             condicion = False
     print(f'El campo {campo} contiene: {datos.json()[campo]}')
     modificacion = input("Ingrese la modificación a realizar: ")
-    accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')acci
+    accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')
     if accion.json()['success']== True:
         print('Se han realizado los cambios.')
     else:
