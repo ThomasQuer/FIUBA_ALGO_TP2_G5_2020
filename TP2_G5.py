@@ -165,8 +165,8 @@ def solicitar_amistad(token, usuario_id):
         solicita amistad al usuario seleccionado
     """
 
-"""#momentaneamente desactivado por cuestiones de permisos de Facebook API
-def enviar_mensaje_usuario(nombre_usuario):
+"""
+def enviar_mensaje_usuario(nombre_usuario): #momentaneamente desactivado por cuestiones de permisos de Facebook API
     """
    # PRE:
     #    nombre_usuario debe ser un string que indique el nombre de usuario de la cuenta de facebook.
@@ -198,18 +198,37 @@ def enviar_mensaje_usuario(nombre_usuario):
 
 def actualizar_datos_perfil(token):
     """
-    PRE:
-        token debe ser un string, la llave de acceso
-    POST:
-        Muestra los atributos que pueden ser moodificados,
-        permite al usuario seleccionar uno
-        y modificarlo.
+    PRE: utiliza función seleccion_token
+    POST: Muestra los atributos de la pagina que pueden ser moodificados, permite al usuario seleccionar uno y modificarlo.
     """
+    token = seleccion_token('empresarial_pagina', token_solo=True)
+    campos_lista = ['name', 'about', 'website', 'bio']
+    campos_string = ", ".join(campos_lista)
+    datos = requests.get(f"https://graph.facebook.com/me?fields={campos_string}&access_token={token}")
+    #Muestra campos y pide seleccion de uno a modificar
+    print('Los campos actuales son: ')
+    for i in campos_lista:
+        print(i)
+    campo = input('Ingrese el campo que quiere modificar: ').lower()
+    condicion = True
+    while condicion == True:
+        if campo not in campos_lista:
+            campo = input('El campo ha sido mal ingresado. Nuevamente escriba el campo que quiere modificar: ').lower()
+        else:
+            condicion = False
+    print(f'El campo {campo} contiene: {datos.json()[campo]}')
+    modificacion = input("Ingrese la modificación a realizar: ")
+    accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')acci
+    if accion.json()['success']== True:
+        print('Se han realizado los cambios.')
+    else:
+        print('Ha surgido un problema, intente nuevamente.')
+
 def ver_ultimos_posts():
     """
-    PRE:
+    PRE: utiliza función seleccion_token 
     POST:
-        muestra tus últimos tres posts.
+        muestra tus últimos tres posts y devuelve una lista de los mismos.
     """
     auxiliar = []
     token = seleccion_token('consumidor_pagina', token_solo=True)
@@ -221,6 +240,8 @@ def ver_ultimos_posts():
         contador += 1
         if contador <= 3:
             auxiliar.append(i)
+    return auxiliar
+
 
 def comentar_objeto():
     """PRE: utiliza función generar_identificador().
