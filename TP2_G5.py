@@ -240,7 +240,13 @@ def ver_ultimos_posts():
         contador += 1
         if contador <= 3:
             auxiliar.append(i)
-    return auxiliar
+
+    posteos = (
+        auxiliar[0]['created_time'] + "\n" + auxiliar[0]['message'] +
+        "\n\n" + auxiliar[1]['created_time'] + "\n" + auxiliar[1]['message'] +
+        "\n\n" + auxiliar[2]['created_time'] + "\n" + auxiliar[2]['message']
+    )
+    return posteos
 
 
 def comentar_objeto():
