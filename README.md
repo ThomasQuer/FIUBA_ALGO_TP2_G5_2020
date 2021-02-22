@@ -1,20 +1,20 @@
 # training_data
-Momentáneamente contine un único archivo que consta sólo de saludos y ligera conversación. Falta ingresar archivo de acciones correspondientes a las funciones realizadas con la api de Facebook. Se debe ampliar aprendizaje con mayor cantidad de ejemplos de entrada-respuesta.
+Contiene los archivos que chatbot_training.py necesitará para completar el aprendizaje
 
 
 # chatbot_training.py
 Se encarga de la creación y aprendizaje de 'Crux', debe ser el primero en ejecutarse.
 
 
-# Crux.py (Archivo para prueba de entrenamiento)
-Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubicados en la carpeta 'training_data'. No realiza una llamada a la api así que su salida es la propia terminal del compilador. La conversación realizada con el usuario se almacena en un archivo extensión .log con fecha y horario integrado. El programa finaliza al recibir una entrada con el string "gracias" en ella.
+# Crux.py (Salida en terminal)
+Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubicados en la carpeta 'training_data'. La conversación realizada con el usuario se almacena en un archivo extensión .log con fecha y horario integrado. Muestra menú de opciones al empezar, luego responde a las entradas realizadas a través del teclado por el usuario.
 
 
 # bot.py
-Crea la clase que le permitirá a la función webhook, mediante el acceso a través de la api, recibir el mensaje del usuario.
+Crea la clase que le permitirá a la función webhook, mediante el acceso a través de la api, recibir el mensaje del usuario y enviar la respuesta.
 
 
-# chatbot.py
+# chatbot.py (Salida a través de messenger)
 Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
 
   La función webhook: 
@@ -24,7 +24,7 @@ Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
   Almacena la conversación entre el bot y el usuario. Falta integrar el nombre del usuario al archivo.log.
 
 
-# Paquetes necesarios:
+# Paquetes necesarios para lograr salida a través de messenger
  Se necesita tener integrado Flask:
 
  Create an environment
