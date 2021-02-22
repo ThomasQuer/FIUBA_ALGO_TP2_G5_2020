@@ -11,8 +11,6 @@ chat = ChatBot(
     'Crux',
     read_only=True,
     logic_adapters=[
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.BestMatch',
         {
             'import_path': "chatterbot.logic.BestMatch",
             "statement_comparison_function": (
