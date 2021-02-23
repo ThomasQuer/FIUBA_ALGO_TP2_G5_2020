@@ -12,7 +12,7 @@ from chatterbot import filters
 
 from funciones_fb import mostrar_menu, obtener_nombre_usuario, ver_posts, dar_like_posteo
 from funciones_fb import actualizar_posteo, subir_posteo, listar_amigos
-from funciones_fb import actualizar_datos_pagina, comentar_objeto
+from funciones_fb import actualizar_datos_pagina, comentar_objeto, listar_seguidores, listar_likes
 
 
 PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
@@ -111,11 +111,16 @@ def actions(text_input, response_text, bot, user_id):
         menu = mostrar_menu()
         bot.send_text_message(user_id, menu)
 
-    elif (response_text.lower()).find("listando") != -1:  # Acá corro la opción 1
-        tupla = ver_posts()
-        posts = tupla[1]
-        posts = "".join(posts)
-        bot.send_text_message(user_id, posts)
+    elif (response_text.lower()).find("listando") != -1:
+        if (response_text.lower()).find("seguís") != -1:  # Opción 10
+            pages = listar_likes()
+            bot.send_text_message(user_id, pages)
+        
+        else:  # Opción 1
+            tupla = ver_posts()
+            posts = tupla[1]
+            posts = "".join(posts)
+            bot.send_text_message(user_id, posts)
 
     elif (response_text.lower()).find("existentes") != -1:
         if (response_text.lower()).find("actualizar") != -1:  # Acá corro la opción 3
@@ -153,6 +158,10 @@ def actions(text_input, response_text, bot, user_id):
         bot.send_text_message(user_id, posts)
         requirement = 'Indique el número de post que desea comentar con el siguiente formato: "C-(número de post) + (mensaje)" Ej: C-2 Nuevo comentario'
         bot.send_text_message(user_id, requirement)
+        
+    elif (response_text.lower()).find("seguidores") != -1:  # Opción 9
+        followers = listar_seguidores()
+        bot.send_text_message(user_id, followers)
 
     elif text_input.find("A:") != -1:
         result = actualizar_datos_pagina(text_input)
