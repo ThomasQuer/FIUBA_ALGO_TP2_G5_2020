@@ -10,7 +10,10 @@ from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
 
-from TP2_G5 import ver_ultimos_posts, obtener_nombre_usuario
+from funciones_fb import mostrar_menu, obtener_nombre_usuario, ver_posts, dar_like_posteo
+from funciones_fb import actualizar_posteo, subir_posteo, subir_foto, listar_amigos
+from funciones_fb import actualizar_datos_pagina, comentar_objeto
+
 
 PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
 
@@ -64,6 +67,7 @@ def webhook():
 
         aux = obtener_nombre_usuario()
         name = aux['name']
+        stop_words = ['N:', 'N-', 'M:']
 
         for message in messaging_events:
             user_id = message['sender']['id']
@@ -74,17 +78,62 @@ def webhook():
                 ", " + name + ', "' + str(text_input) + '"'
             )
 
-            if (str(text_input)).find("post") != -1:
-                response_text = ver_ultimos_posts()
-                print('Message from user ID {} - {}'.format(user_id, text_input))
+            response_text = chat.get_response(text_input)
+            print('Message from user ID {} - {}'.format(user_id, text_input))
+
+            contador = 0
+            for i in range(len(stop_words)):
+                if str(text_input).find(stop_words[i]) == -1:
+                    contador += 1
+
+            if contador == len(stop_words):
                 bot.send_text_message(user_id, str(response_text))
 
-            # Acá se irían agregando las opciones para el llamado a funciones
-            
-            else:
-                response_text = chat.get_response(text_input)
-                print('Message from user ID {} - {}'.format(user_id, text_input))
-                bot.send_text_message(user_id, str(response_text))
+            if (str(response_text).lower()).find("menú") != -1:
+                menu = mostrar_menu()
+                bot.send_text_message(user_id, menu)
+
+            elif (str(response_text).lower()).find("listando") != -1:  # Acá corro la opción 1
+                combo = ver_posts()
+                posts = combo[1]
+                posts = "".join(posts)
+                bot.send_text_message(user_id, posts)
+
+            elif (str(response_text).lower()).find("existentes") != -1:
+                if (str(response_text).lower()).find("actualizar") != -1:  # Acá corro la opción 3
+                    combo = ver_posts()
+                    posts = combo[1] #Listado de posteos
+                    posts = "".join(posts)
+                    bot.send_text_message(user_id, posts)
+                    requisito = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) + (mensaje)" Ej: N-5 Actualización'
+                    bot.send_text_message(user_id, requisito)
+
+                else:  # Acá corro la opción 2
+                    combo = ver_posts()
+                    posts = combo[1]
+                    posts = "".join(posts)
+                    bot.send_text_message(user_id, posts)
+                    requisito = 'Indique el número de post al que desea darle like con el siguiente formato: "N:(número de post)" Sin espacio. Ej: N:4'
+                    bot.send_text_message(user_id, requisito)
+
+            elif (str(response_text).lower()).find("subamos") != -1: #Opción 4
+                requisito = 'Ingresá el mensaje del posteo de la siguiente forma "M:(mensaje)" Sin espacio. Ej M:Mensaje actualización'
+                bot.send_text_message(user_id, requisito)
+
+            elif str(text_input).find("M:") != -1:
+                eleccion = str(text_input)
+                respuesta = subir_posteo(eleccion)
+                bot.send_text_message(user_id, respuesta)
+
+            elif str(text_input).find("N:") != -1:
+                eleccion = str(text_input)
+                respuesta = dar_like_posteo(eleccion)
+                bot.send_text_message(user_id, respuesta)
+
+            elif str(text_input).find("N-") != -1:
+                eleccion = str(text_input)
+                respuesta = actualizar_posteo(eleccion)
+                bot.send_text_message(user_id, respuesta)
 
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
