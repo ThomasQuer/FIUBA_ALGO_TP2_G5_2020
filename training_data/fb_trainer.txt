@@ -1,0 +1,416 @@
+Menú
+Visualizando menú
+Mostrar menú
+Mostrando menú
+Mostrar menu
+Mostrando menú
+¿Podría ver el menú?
+Por supuesto que si, visualizando menú.
+¿Podria ver el menu?
+Por supuesto que si, visualizando menú.
+Menu
+Visualizando menú
+Salir
+¡Hasta luego!
+
+1
+Listando posteos hechos...
+Quiero ver los posteos
+Listando posteos hechos...
+Mostrame los posteos
+¡Enseguida! Listando posteos hechos.
+¿Podrías mostrarme los posteos hechos?
+¡Por supuesto que sí! Listando posteos hechos.
+Quisiera ver los posteos hechos
+Listando posteos hechos:
+Quisiera ver los posteos realizados
+¡De inmediato! Listando posteos hechos
+¿Me mostrarías los posteos hechos?
+¡Por supuesto que sí! Listando posteos hechos
+Quiero ver los posts
+Listando posts hechos...
+Mostrame los posts
+¡Enseguida! Listando posts hechos.
+¿Podrías mostrarme los posts hechos?
+¡Por supuesto que sí! Listando posts hechos
+Quisiera ver los posts hechos
+Listando posts hechos:
+Quisiera ver los posts realizados
+¡De inmediato! Listando posts hechos
+¿Me mostrarías los posts hechos?
+¡Por supuesto que sí! Listando posts hechos
+Quiero ver las publicaciones
+Listando publicaciones hechas...
+Mostrame las publicaciones
+¡Enseguida! Listando publicaciones...
+¿Podrías mostrarme las publicaciones hechas?
+¡Por supuesto que sí! Listando publicaciones
+Quisiera ver las publicaciones hechas
+Listando publicaciones hechas:
+Quisiera ver las publicaciones realizadas
+¡De inmediato! Listando publicaciones hechas
+¿Me mostrarías las publicaciones hechas?
+¡Por supuesto que sí! Listando publicaciones hechas
+
+2
+Listaré los posteos existentes para que elijas al que quieras darle like.
+Quiero dar like a un posteo
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Quisiera dar like a un posteo
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Dar like a posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Darle like a un posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Likear posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Like a posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Dar like
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Dar like posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+¿Puedo darle like a un posteo?
+Por supuesto, listaré los posteos existentes para que elijas al que quieras darle like.
+¿Podría darle like a un posteo?
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Quiero dar like a un post
+¡Eso es genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Quisiera dar like a un post
+¡Eso es genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Dar like a post
+¡Genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Darle like a un post
+¡Genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Likear post
+¡Genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Like a post
+¡Genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Dar like post
+¡Genial!, listaré los posts existentes para que elijas al que quieras darle like.
+¿Puedo darle like a un post?
+Por supuesto, listaré los posts existentes para que elijas al que quieras darle like.
+¿Podría darle like a un post?
+¡Eso es genial!, listaré los posts existentes para que elijas al que quieras darle like.
+Quiero dar like a una publicacion
+¡Eso es genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Quisiera dar like a una publicacion
+¡Eso es genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Dar like a publicacion
+¡Genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Darle like a una publicacion
+¡Genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Likear publicacion
+¡Genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Like a publicacion
+¡Genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Dar like publicacion
+¡Genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+¿Puedo darle like a una publicacion?
+Por supuesto, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+¿Podría darle like a una publicacion?
+¡Eso es genial!, listaré las publicaciones existentes para que elijas a la que quieras darle like.
+Quiero dar me gusta a un posteo
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle like.
+Quisiera dar me gusta a un posteo
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta a posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Darle me gusta a un posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta a posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta posteo
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Puedo darle me gusta a un posteo?
+Por supuesto, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Podría darle me gusta a un posteo?
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Quiero dar me gusta a un post
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Quisiera dar me gusta a un post
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta a post
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Darle me gusta a un post
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta post
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta a post
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta post
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Puedo darle me gusta a un post?
+Por supuesto, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Podría darle me gusta a un post?
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Quiero dar me gusta a una publicacion
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Quisiera dar me gusta a una publicacion
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta a publicacion
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Darle me gusta a una publicacion
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta publicacion
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Me gusta a publicacion
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+Dar me gusta publicacion
+¡Genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Puedo darle me gusta a una publicacion?
+Por supuesto, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+¿Podría darle me gusta a una publicacion?
+¡Eso es genial!, listaré los posteos existentes para que elijas al que quieras darle me gusta.
+
+3
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quiero actualizar un posteo
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quisiera actualizar un posteo
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Podría actualizar un posteo?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Puedo actualizar un posteo?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+Actualizar posteo
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Necesito actualizar un posteo
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quiero actualizar un post
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quisiera actualizar un post
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Podría actualizar un post?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Puedo actualizar un post?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+Actualizar post
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Necesito actualizar un post
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quiero actualizar una publicación
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Quisiera actualizar una publicación
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Podría actualizar una publicación?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+¿Puedo actualizar una publicación?
+¡Por supuesto!, listaré los posteos existentes para que elijas el que quieras actualizar.
+Actualizar publicación
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Necesito actualizar una publicación
+Muy bien, listaré los posteos existentes para que elijas el que quieras actualizar.
+Posteo
+Necesito que expecifiques un poco más la acción que quieras realizar
+Post
+Necesito que expecifiques un poco más la acción que quieras realizar
+Publicación
+Necesito que expecifiques un poco más la acción que quieras realizar
+
+4
+¡Muy bien!, entonces subamos ese nuevo posteo.
+5
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+Quiero subir un posteo
+¡A la orden, capitán! ¿Pero con o sin foto?
+Con
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+Quisiera subir un posteo
+¡A la orden, capitán! ¿Pero con o sin foto?
+Sin
+¡Muy bien!, entonces subamos ese nuevo posteo.
+¿Podría subir un posteo?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Con foto
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+¿Puedo subir un posteo?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Sin foto
+¡Muy bien!, entonces subamos ese nuevo posteo.
+Subir posteo
+¡Enseguida! ¿Con o sin foto?
+Necesito subir un posteo
+¡Enseguida! ¿Con o sin foto?
+Quiero subir un nuevo posteo
+¡A la orden, capitán! ¿Pero con o sin foto?
+Quisiera subir un nuevo posteo
+¡A la orden, capitán! ¿Pero con o sin foto?
+¿Podría subir un nuevo posteo?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+¿Puedo subir un nuevo posteo?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Subir nuevo posteo
+¡Enseguida! ¿Con o sin foto?
+Necesito subir un nuevo posteo
+¡Enseguida! ¿Con o sin foto?
+Quiero subir un post
+¡A la orden, capitán! ¿Pero con o sin foto?
+Con
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+Quisiera subir un post
+¡A la orden, capitán! ¿Pero con o sin foto?
+Sin
+¡Muy bien!, entonces subamos ese nuevo posteo.
+¿Podría subir un post?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Con foto
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+¿Puedo subir un post?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Sin foto
+¡Muy bien!, entonces subamos ese nuevo posteo.
+Subir post
+¡Enseguida! ¿Con o sin foto?
+Necesito subir un post
+¡Enseguida! ¿Con o sin foto?
+Quiero subir un nuevo post
+¡A la orden, capitán! ¿Pero con o sin foto?
+Quisiera subir un nuevo post
+¡A la orden, capitán! ¿Pero con o sin foto?
+¿Podría subir un nuevo post?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+¿Puedo subir un nuevo post?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Subir nuevo post
+¡Enseguida! ¿Con o sin foto?
+Necesito subir un nuevo post
+¡Enseguida! ¿Con o sin foto?
+Quiero subir una publicacion
+¡A la orden, capitán! ¿Pero con o sin foto?
+Con
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+Quisiera subir una publicacion
+¡A la orden, capitán! ¿Pero con o sin foto?
+Sin
+¡Muy bien!, entonces subamos ese nuevo posteo.
+¿Podría subir una publicacion?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Con foto
+¡Muy bien!, entonces subamos ese nuevo posteo con foto incluida.
+¿Puedo subir una publicacion?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Sin foto
+¡Muy bien!, entonces subamos ese nuevo posteo.
+Subir publicacion
+¡Enseguida! ¿Con o sin foto?
+Necesito subir una publicacion
+¡Enseguida! ¿Con o sin foto?
+Quiero subir una nueva publicacion
+¡A la orden, capitán! ¿Pero con o sin foto?
+Quisiera subir una nueva publicacion
+¡A la orden, capitán! ¿Pero con o sin foto?
+¿Podría subir una nueva publicacion?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+¿Puedo subir una nueva publicacion?
+¡Por supuesto que sí! ¿Pero con o sin foto?
+Subir nueva publicacion
+¡Enseguida! ¿Con o sin foto?
+Necesito subir una nueva publicacion
+¡Enseguida! ¿Con o sin foto?
+
+6
+Mostrando cantidad de amigos...
+Quisiera ver la cantidad de amigos que tengo
+Genial, mostrando cantidad de amigos...
+Quisiera ver cuantos amigos tengo
+Genial, mostrando cantidad de amigos...
+Quisiera ver mi cantidad de amigos
+Genial, mostrando cantidad de amigos...
+Quiero ver la cantidad de amigos que tengo
+Genial, mostrando cantidad de amigos...
+Quiero ver cuantos amigos tengo
+Genial, mostrando cantidad de amigos...
+Quiero ver mi cantidad de amigos
+Genial, mostrando cantidad de amigos...¿Puedo ver mi cantidad de amigos?
+¡Por supuesto!, mostrando cantidad de amigos...
+¿Puedo ver cuantos amigos tengo?
+¡Por supuesto!, mostrando cantidad de amigos...
+¿Cuantos amigos tengo?
+Mostrando cantidad de amigos...
+¿Podría ver mi cantidad de amigos?
+¡Por supuesto!, mostrando cantidad de amigos...
+¿Podría ver cuántos amigos tengo?
+¡Por supuesto!, mostrando cantidad de amigos...
+Amigos
+Mostrando cantidad de amigos...
+
+7
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Actualizar datos de la página
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Actualizar datos
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Quisiera actualizar datos de la página
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Quisiera actualizar datos
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Quiero actualizar datos de la pagina
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Quiero actualizar datos
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+¿Puedo actualizar datos de la pagina?
+¡Por supuesto!, A continuación te mostraré los datos que puedan ser actualizados.
+¿Puedo actualizar datos?
+¡Por supuesto!, A continuación te mostraré los datos que puedan ser actualizados.
+¿Podría actualizar datos de la página?
+¡Por supuesto!, A continuación te mostraré los datos que puedan ser actualizados.
+¿Podría actualizar datos?
+¡Por supuesto!, A continuación te mostraré los datos que puedan ser actualizados.
+Necesito actualizar datos de la página.
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Necesito actualizar datos
+¡Genial!, A continuación te mostraré los datos que puedan ser actualizados.
+Actualizar
+Necesito que expecifiques un poco más la acción que quieras realizar.
+
+8
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar una publicación
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar publicación
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quiero comentar una publicación
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quisiera comentar una publicación
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Necesito comentar una publicación
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Puedo comentar una publicación?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Podría comentar una publicación?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar un post
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar post
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quiero comentar un post
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quisiera comentar un post
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Necesito comentar un post
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Puedo comentar un post?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Podría comentar un post?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar un posteo
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar posteo
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quiero comentar un posteo
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Quisiera comentar un posteo
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Necesito comentar un posteo
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Puedo comentar un posteo?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+¿Podría comentar un posteo?
+¡Por supuesto! Primero visualizaremos los posteos para que elijas el que quieras comentar.
+Comentar
+Primero visualizaremos los posteos para que elijas el que quieras comentar.
