@@ -11,7 +11,7 @@ from chatterbot import response_selection
 from chatterbot import filters
 
 from funciones_fb import mostrar_menu, obtener_nombre_usuario, ver_posts, dar_like_posteo
-from funciones_fb import actualizar_posteo, subir_posteo, subir_foto, listar_amigos
+from funciones_fb import actualizar_posteo, subir_posteo, listar_amigos
 from funciones_fb import actualizar_datos_pagina, comentar_objeto
 
 
@@ -81,59 +81,15 @@ def webhook():
             response_text = chat.get_response(text_input)
             print('Message from user ID {} - {}'.format(user_id, text_input))
 
-            contador = 0
+            count = 0
             for i in range(len(stop_words)):
                 if str(text_input).find(stop_words[i]) == -1:
-                    contador += 1
+                    count += 1
 
-            if contador == len(stop_words):
+            if count == len(stop_words):
                 bot.send_text_message(user_id, str(response_text))
 
-            if (str(response_text).lower()).find("menú") != -1:
-                menu = mostrar_menu()
-                bot.send_text_message(user_id, menu)
-
-            elif (str(response_text).lower()).find("listando") != -1:  # Acá corro la opción 1
-                combo = ver_posts()
-                posts = combo[1]
-                posts = "".join(posts)
-                bot.send_text_message(user_id, posts)
-
-            elif (str(response_text).lower()).find("existentes") != -1:
-                if (str(response_text).lower()).find("actualizar") != -1:  # Acá corro la opción 3
-                    combo = ver_posts()
-                    posts = combo[1] #Listado de posteos
-                    posts = "".join(posts)
-                    bot.send_text_message(user_id, posts)
-                    requisito = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) + (mensaje)" Ej: N-5 Actualización'
-                    bot.send_text_message(user_id, requisito)
-
-                else:  # Acá corro la opción 2
-                    combo = ver_posts()
-                    posts = combo[1]
-                    posts = "".join(posts)
-                    bot.send_text_message(user_id, posts)
-                    requisito = 'Indique el número de post al que desea darle like con el siguiente formato: "N:(número de post)" Sin espacio. Ej: N:4'
-                    bot.send_text_message(user_id, requisito)
-
-            elif (str(response_text).lower()).find("subamos") != -1: #Opción 4
-                requisito = 'Ingresá el mensaje del posteo de la siguiente forma "M:(mensaje)" Sin espacio. Ej M:Mensaje actualización'
-                bot.send_text_message(user_id, requisito)
-
-            elif str(text_input).find("M:") != -1:
-                eleccion = str(text_input)
-                respuesta = subir_posteo(eleccion)
-                bot.send_text_message(user_id, respuesta)
-
-            elif str(text_input).find("N:") != -1:
-                eleccion = str(text_input)
-                respuesta = dar_like_posteo(eleccion)
-                bot.send_text_message(user_id, respuesta)
-
-            elif str(text_input).find("N-") != -1:
-                eleccion = str(text_input)
-                respuesta = actualizar_posteo(eleccion)
-                bot.send_text_message(user_id, respuesta)
+            actions(str(text_input), str(response_text), bot, user_id)
 
             log(
                 time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
@@ -141,6 +97,82 @@ def webhook():
             )
 
         return '200'
+
+
+def actions(text_input, response_text, bot, user_id):
+    """
+    PRE:
+        text_input y response_text deben ser str, bot es el llamado a la clase Bot
+        user_id debe ser un str
+    POST:
+        Al encontrarse con una palabra clave realiza la acción correspondiente
+    """
+    if (response_text.lower()).find("menú") != -1:
+        menu = mostrar_menu()
+        bot.send_text_message(user_id, menu)
+
+    elif (response_text.lower()).find("listando") != -1:  # Acá corro la opción 1
+        tupla = ver_posts()
+        posts = tupla[1]
+        posts = "".join(posts)
+        bot.send_text_message(user_id, posts)
+
+    elif (response_text.lower()).find("existentes") != -1:
+        if (response_text.lower()).find("actualizar") != -1:  # Acá corro la opción 3
+            tupla = ver_posts()
+            posts = tupla[1]  # Listado de posteos
+            posts = "".join(posts)
+            bot.send_text_message(user_id, posts)
+            requirement = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) + (mensaje)" Ej: N-5 Actualización'
+            bot.send_text_message(user_id, requirement)
+
+        else:  # Acá corro la opción 2
+            tupla = ver_posts()
+            posts = tupla[1]
+            posts = "".join(posts)
+            bot.send_text_message(user_id, posts)
+            requirement = 'Indique el número de post al que desea darle like con el siguiente formato: "N:(número de post)" Sin espacio. Ej: N:4'
+            bot.send_text_message(user_id, requirement)
+
+    elif (response_text.lower()).find("subamos") != -1:  # Opción 4
+        requirement = 'Ingresá el mensaje del posteo de la siguiente forma "M:(mensaje)" Sin espacio. Ej M:Posteo nuevo'
+        bot.send_text_message(user_id, requirement)
+
+    elif (response_text.lower()).find("amigos") != -1:  # Opción 6
+        friends = listar_amigos()
+        bot.send_text_message(user_id, friends)
+
+    elif (response_text.lower()).find("datos") != -1:  # Opción 7
+        requirement = 'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\nIndique el que desee actualizar con el siguiente formato: "A:(número de opción) + (mensaje)" Ej: A:2 Esta es mi nueva info'
+        bot.send_text_message(user_id, requirement)
+
+    elif (response_text.lower()).find("comentar") != -1:  # Opción 8
+        tupla = ver_posts()
+        posts = tupla[1]
+        posts = "".join(posts)
+        bot.send_text_message(user_id, posts)
+        requirement = 'Indique el número de post que desea comentar con el siguiente formato: "C-(número de post) + (mensaje)" Ej: C-2 Nuevo comentario'
+        bot.send_text_message(user_id, requirement)
+
+    elif text_input.find("A:") != -1:
+        result = actualizar_datos_pagina(text_input)
+        bot.send_text_message(user_id, result)
+
+    elif text_input.find("M:") != -1:
+        result = subir_posteo(text_input)
+        bot.send_text_message(user_id, result)
+
+    elif text_input.find("N:") != -1:
+        result = dar_like_posteo(text_input)
+        bot.send_text_message(user_id, result)
+
+    elif text_input.find("N-") != -1:
+        result = actualizar_posteo(text_input)
+        bot.send_text_message(user_id, result)
+
+    elif text_input.find("C-") != -1:
+        result = comentar_objeto(text_input)
+        bot.send_text_message(user_id, result)
 
 
 def log(message):
@@ -157,5 +189,3 @@ def log(message):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
- 
