@@ -247,7 +247,7 @@ def comentar_objeto(dato):
     eleccion = dato[0]
     dato[0] = ""
     eleccion = list(eleccion)
-    eleccion.remove("N")
+    eleccion.remove("C")
     eleccion.remove("-")
     eleccion = "".join(eleccion)
     mensaje = " ".join(dato)
@@ -289,6 +289,7 @@ def listar_likes():
     lista_likes = "\n".join(lista_likes)
 
     return lista_likes
+
 
 # funciones para otras funciones
 def seleccion_token(tipo_token, token_solo=False):
@@ -406,4 +407,6 @@ def limpiar_fecha(dato):
     formato_fecha = f"{dia}/{mes}/{anio}  {tiempo}"
 
     return formato_fecha
+
+
 
