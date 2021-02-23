@@ -13,8 +13,9 @@ from chatterbot import ChatBot
 from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
-from TP2_G5 import mostrar_menu, ver_posts, dar_like_posteo, actualizar_posteo, subir_posteo
-from TP2_G5 import subir_foto, listar_amigos, actualizar_datos_pagina, comentar_objeto
+from TP2_G5 import mostrar_menu, ver_posts, dar_like_posteo, actualizar_posteo
+from TP2_G5 import subir_posteo, subir_foto, listar_amigos, actualizar_datos_pagina
+from TP2_G5 import comentar_objeto, listar_seguidores, listar_likes
 
 
 def capturar_peticiones(nombre, bot, seguir):
@@ -42,7 +43,11 @@ def capturar_peticiones(nombre, bot, seguir):
         )
 
     if (str(respuesta).lower()).find("listando") != -1:
-        ver_posts()
+        if (str(respuesta).lower()).find("seguís") != -1:
+            listar_likes()
+            
+        else:
+            ver_posts()
 
     elif (str(respuesta).lower()).find("existentes") != -1:
         if (str(respuesta).lower()).find("actualizar") != -1:
@@ -64,6 +69,9 @@ def capturar_peticiones(nombre, bot, seguir):
 
     elif (str(respuesta).lower()).find("comentar") != -1:
         comentar_objeto()
+
+    elif (str(respuesta).lower()).find("seguidores") != -1:
+        listar_seguidores()
 
     elif (str(respuesta).lower()).find("menú") != -1:
         mostrar_menu()
