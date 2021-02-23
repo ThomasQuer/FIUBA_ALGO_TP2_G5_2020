@@ -256,7 +256,6 @@ def comentar_objeto():
 
 def listar_seguidores():
     """
-    PRE: utiliza funcion seleccion_token()
     POST:
         Muestra la cantidad de seguidores de la pagina de crux.
     """
@@ -267,8 +266,9 @@ def listar_seguidores():
     print(f'La cantidad de seguidores es: {cantidad_seguidores}')
 
 def listar_likes():
-    """PRE: necesita funcion seleccion_token()
-    PRO: devuelve una lista con el nombre en string de las paginas likeadas por el usuario.
+    """
+    POST:
+        devuelve una lista con el nombre en string de las paginas likeadas por el usuario.
     """
     token, graph = seleccion_token('consumidor_cuenta')
     likes = graph.get_connections(id="me", connection_name="likes")
