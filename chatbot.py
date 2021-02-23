@@ -67,7 +67,7 @@ def webhook():
 
         aux = obtener_nombre_usuario()
         name = aux['name']
-        stop_words = ['N:', 'N-', 'M:']
+        stop_words = ['A:', 'M:', 'N:', 'N-', 'C-']
 
         for message in messaging_events:
             user_id = message['sender']['id']
@@ -128,7 +128,7 @@ def actions(text_input, response_text, bot, user_id):
             posts = tupla[1]  # Listado de posteos
             posts = "".join(posts)
             bot.send_text_message(user_id, posts)
-            requirement = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) + (mensaje)" Ej: N-5 Actualización'
+            requirement = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) (mensaje)" Ej: N-5 Actualización'
             bot.send_text_message(user_id, requirement)
 
         else:  # Acá corro la opción 2
@@ -148,7 +148,7 @@ def actions(text_input, response_text, bot, user_id):
         bot.send_text_message(user_id, friends)
 
     elif (response_text.lower()).find("datos") != -1:  # Opción 7
-        requirement = 'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\nIndique el que desee actualizar con el siguiente formato: "A:(número de opción) + (mensaje)" Ej: A:2 Esta es mi nueva info'
+        requirement = 'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\nIndique el que desee actualizar con el siguiente formato: "A:(número de opción) (mensaje)" Ej: A:2 Esta es mi nueva info'
         bot.send_text_message(user_id, requirement)
 
     elif (response_text.lower()).find("comentar") != -1:  # Opción 8
@@ -156,9 +156,9 @@ def actions(text_input, response_text, bot, user_id):
         posts = tupla[1]
         posts = "".join(posts)
         bot.send_text_message(user_id, posts)
-        requirement = 'Indique el número de post que desea comentar con el siguiente formato: "C-(número de post) + (mensaje)" Ej: C-2 Nuevo comentario'
+        requirement = 'Indique el número de post que desea comentar con el siguiente formato: "C-(número de post) (mensaje)" Ej: C-2 Nuevo comentario'
         bot.send_text_message(user_id, requirement)
-        
+
     elif (response_text.lower()).find("seguidores") != -1:  # Opción 9
         followers = listar_seguidores()
         bot.send_text_message(user_id, followers)
