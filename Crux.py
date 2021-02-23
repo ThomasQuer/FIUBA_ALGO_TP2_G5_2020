@@ -149,6 +149,11 @@ def main():
     """
     POST: Realiza el llamado a la función "chatbot"
     """
+    PAGE_ACCESS_TOKEN = 'EAAPQlFICfVYBANAGfhETlDucMuf5ZAZCRyY15u2AbYCy22QajvRa1QKLeZCAd65e7UoS5ss3ZBOmvZANXxZBqYwnKOyK9EcJnCvvUTUXtvOMvsSBmHAjMbg14b3dEd2HaZAH0ssr3pNQ1M1OKMIH3vPNEnlSPfz0sI5Gp8sDZCMKP8kmzrQaZBEMD'
+
+    app = Flask(__name__)
+
+
 
     chatbot()
 
