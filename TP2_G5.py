@@ -20,7 +20,9 @@ def mostrar_menu():
         "5. Subir un nuevo posteo con imagen incluida.\n"
         "6. Mostrar cantidad de amigos.\n"
         "7. Actualizar datos de la página.\n"
-        "8. Comentar una publicación.\n\n"
+        "8. Comentar una publicación.\n"
+        "9. Mostrar la cantidad de seguidores.\n"
+        "10. Mostrar las páginas seguidas.\n\n"
         "INSTAGRAM:\n\n"
         "En construcción.\n\n"
         "Elige una opción a ejecutar.\n"
@@ -252,6 +254,28 @@ def comentar_objeto():
     else:
         print("Ha ocurrido un error, intente nuevamente.")
 
+def listar_seguidores():
+    """
+    PRE: utiliza funcion seleccion_token()
+    POST:
+        Muestra la cantidad de seguidores de la pagina de crux.
+    """
+    token = seleccion_token("consumidor_pagina", token_solo = True)
+    seguidores = requests.get(f"https://graph.facebook.com/v9.0/105249781540470?fields=followers_count&access_token={token}").json()
+    if seguidores:
+        cantidad_seguidores = seguidores['followers_count']
+    print(f'La cantidad de seguidores es: {cantidad_seguidores}')
+
+def listar_likes():
+    """PRE: necesita funcion seleccion_token()
+    PRO: devuelve una lista con el nombre en string de las paginas likeadas por el usuario.
+    """
+    token, graph = seleccion_token('consumidor_cuenta')
+    likes = graph.get_connections(id="me", connection_name="likes")
+    lista_likes = []
+    print('Las páginas seguidas son:')
+    for i in likes['data']:
+        print(i['name'])
 
 # funciones para otras funciones
 def seleccion_token(tipo_token, token_solo=False):

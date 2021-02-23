@@ -1,0 +1,32 @@
+#Justificación funciones no realizadas o incompletas
+
+enviar_mensaje_usuario()
+    Requiere de permisos como pages_messaging los cuales deben ser otorgados por FACEBOOK al evaluar tu aplicacion.
+    ref: https://developers.facebook.com/docs/messenger-platform/reference/send-api/
+    Se logro realizar un intento utilizando libreria fbchat pero el uso de la misma bloqueó la cuenta al utilizarla. 
+
+solicitar_amistad()
+    Desde la versión 2.0 quedó obsoleto la solicitud de amistad desde la API FACEBOOK.
+    Alternativas propuestas por Friends Dialog mediante Facebook SDK for JavaScript tambien lo estan.
+    ref: https://developers.facebook.com/docs/graph-api/reference/v9.0/user/friendrequests
+    https://stackoverflow.com/questions/2421200/can-i-add-friend-with-facebooks-api
+
+seguir_usuario()
+    No se permite realizar esta opcion mediante API FACEBOOK.
+    ref: https://stackoverflow.com/questions/34228162/can-i-follow-users-through-facebook-graph-api
+
+solicitar_amistad()
+    Requiere del permiso read_request el cual no esta disponible.
+    ref: https://developers.facebook.com/docs/graph-api/reference/v9.0/user/friendrequests
+
+listar_seguidores()
+    Retorna la cantidad de seguidores de la pagina de crux. 
+    Debido al cambio de versión de la API FACEBOOK superior a 2.0 por cuestiones de privacida no puede ser retornada la información.
+    ref:
+    https://stackoverflow.com/questions/31651982/how-to-get-facebook-follower-using-graph-api-and-graph-secret
+
+listar_amigos()
+    Retorna la cantidad de amigos. 
+    Debido al cambio de versión de la API FACEBOOK solamente aquellos amigos que tengan la app instalada apareceran en la lista.
+    ref: https://developers.facebook.com/docs/graph-api/reference/user/friends/
+
