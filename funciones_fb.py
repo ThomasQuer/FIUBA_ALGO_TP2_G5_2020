@@ -8,7 +8,7 @@ import base64
 def mostrar_menu():
     """
     POST:
-        Visualiza en pantalla el menú de opciones disponibles.
+        Devuelve el menú de acciones, str.
     """
     var = (
         "************* ACCIONES DISPONIBLES *************\n\n"
@@ -16,7 +16,7 @@ def mostrar_menu():
         "2. Darle like a un posteo.\n"
         "3. Actualizar un posteo.\n"
         "4. Subir un nuevo posteo, sólo escritura.\n"
-        "5. Subir un nuevo posteo con imagen incluida.\n"
+        "5. Función desactivada.\n"
         "6. Mostrar cantidad de amigos.\n"
         "7. Actualizar datos de la página.\n"
         "8. Comentar una publicación.\n\n"
@@ -36,15 +36,16 @@ def obtener_nombre_usuario():
     token = seleccion_token('consumidor_cuenta', token_solo=True)
     dicc = requests.get(f"https://graph.facebook.com/v9.0/me?fields=id%2Cname&access_token={token}")
     dicc_json = dicc.json()
+    
     return (dicc_json)
 
 
 def ver_posts():
     """
     POST:
-        muestra todos los posteos hechos y devuelve una lista: id_publicacion
-        la misma contiene las id de los posts ubicadas en la posicion del
-        número de post.
+        Devuelve una tupla compuesta de id_publicacion, una lista con las ids ubicadas
+        en la posición del número de post, y posts_lista, una lista con las publicaciones
+        hechas enumeradas según más reciente.
     """
     auxiliar = []
     id_publicacion = []
@@ -79,11 +80,13 @@ def ver_posts():
 
 def dar_like_posteo(eleccion):
     """
+    PRE:
+        eleccion debe ser un string
     POST:
-        genera un like en el posteo enviado
+        Devuelve un string con la respuesta de la acción.
     """
-    combo = ver_posts()
-    id_publicacion = combo[0]
+    tupla = ver_posts()
+    id_publicacion = tupla[0]
     # Se selecciona token de pagina desde una app empresarial y se utiliza api
     token, graph = seleccion_token("empresarial_pagina")
     # Se solicita id del posteo a dar like
@@ -105,13 +108,14 @@ def dar_like_posteo(eleccion):
 
 def actualizar_posteo(dato):
     """
+    PRE:
+        dato debe ser un string
     POST:
-        Devuelve un diccionario con todas las caracteristicas
-        del posteo seleccionado
+        Devuelve un string con la respuesta de la acción.
     """
     token, graph = seleccion_token("empresarial_pagina")
-    combo = ver_posts()
-    id_publicacion = combo[0]
+    tupla = ver_posts()
+    id_publicacion = tupla[0]
     dato = dato.split(" ")
     eleccion = dato[0]
     dato[0] = ""
@@ -132,8 +136,10 @@ def actualizar_posteo(dato):
 
 def subir_posteo(mensaje):
     """
+    PRE:
+        mensaje debe ser un string
     POST:
-        permite escribir un texto y lo publica en una pagina la cual se solicita el id al usuario.
+        Devuelve un string con la respuesta de la acción.
     """
     # Se selecciona token de pagina desde una app empresarial y se utiliza api
     token, graph = seleccion_token("empresarial_pagina")
@@ -151,10 +157,12 @@ def subir_posteo(mensaje):
     return linea
 
 
-def subir_foto(dato): #Crea un bucle terrible en messenger y relentiza al bot
+def subir_foto(dato):  # Crea un bucle terrible en messenger y relentiza al bot. Función desactivada en messenger
     """
+    PRE:
+        dato debe ser un string
     POST:
-        Solicita al usuario que indique la ubicación de una foto y la publica en la pagina de Crux.
+        Devuelve un string con la respuesta de la acción.
     """
     # El posteo foto es en la pagina de Crux:
     # con token empresa_cuenta y consumidor_cuenta : facebook.GraphAPIError: (#200) This endpoint is deprecated since the required permission publish_actions is deprecated
@@ -176,68 +184,80 @@ def subir_foto(dato): #Crea un bucle terrible en messenger y relentiza al bot
 def listar_amigos():  # Devuelve la cantidad de amigos.
     """
     POST:
-        Devuelve una lista con los amigos.
+        Devuelve un string con la respuesta de la acción.
     """
     token, graph = seleccion_token("consumidor_cuenta")
     amigos = graph.get_object('me', fields='friends')
     # Excepcion: Solo los amigos que han instalado esta aplicación estarán
     # en la versión 2.0 o superior de la API.
-    print(
-        "La cantidad de amigos que tienes es: " +
-        str(amigos['friends']['summary']['total_count'])
-    )
+    linea = "La cantidad de amigos que tienes es: " + str(amigos['friends']['summary']['total_count'])
     # ver como obtener nombre de los que tienen la api
     # lista_amigos = request.get(f"https://graph.facebook.com/v9.0/{friend-list-id}?access_token={token}")
 
+    return linea
 
-def actualizar_datos_pagina():
+
+def actualizar_datos_pagina(dato):
     """
+    PRE:
+        dato debe ser un string
     POST:
-        Muestra los atributos de la pagina que pueden ser moodificados,
-        permite al usuario seleccionar uno y modificarlo.
+        Devuelve un string con la respuesta de la acción.
     """
     token = seleccion_token('empresarial_pagina', token_solo=True)
     campos_lista = ['name', 'about', 'website', 'bio']
     campos_string = ", ".join(campos_lista)
     datos = requests.get(f"https://graph.facebook.com/me?fields={campos_string}&access_token={token}")
-    # Muestra campos y pide seleccion de uno a modificar
-    eleccion = input(
-        'Los campos actuales son:\n'
-        '1.Name\n2.About\n3.Website\n\n¿Cuál desea actualizar?: ')
+    dato = dato.split(" ")
+    eleccion = dato[0]
+    dato[0] = ""
+    eleccion = list(eleccion)
+    eleccion.remove("A")
+    eleccion.remove(":")
+    eleccion = "".join(eleccion)
+    modificacion = " ".join(dato)
 
-    while not eleccion.isnumeric() or int(eleccion) < 1 or int(eleccion) > 3:
-        eleccion = input("Opción no válida. Por favor vuelva a ingresar: ")
-  
     for i in range(len(campos_lista)):
         if int(eleccion)-1 == i:
             campo = campos_lista[i]
 
-    print(f'El campo {campo} contiene: {datos.json()[campo]}')
-    modificacion = input("Ingrese la modificación a realizar: ")
     accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')
     if accion.json()['success']:
-        print('Se han realizado los cambios.')
+        linea = 'Se han realizado los cambios.'
     else:
-        print('Ha surgido un problema, intente nuevamente.')
+        linea = 'Ha surgido un problema, intente nuevamente.'
+
+    return linea
 
 
-def comentar_objeto():
+def comentar_objeto(dato):
     """
+    PRE:
+        dato debe ser un string
     POST:
-        permite escribir un comentario en el objeto cuyo id es solicitado al usuario.
+        Devuelve un string con la respuesta de la acción.
     """
     token, graph = seleccion_token("empresarial_pagina")
     id_publicacion = ver_posts()
-    eleccion = input("Indique el número del post que desea comentar: ")
-    while not eleccion.isnumeric() or int(eleccion) < 0 or int(eleccion) > (len(id_publicacion)-1):
-        eleccion = input("Opción no válida. Por favor vuelva a ingresar: ")
-    mensaje = input("Ingrese el mensaje a comentar: ")
+    tupla = ver_posts()
+    id_publicacion = tupla[0]
+    dato = dato.split(" ")
+    eleccion = dato[0]
+    dato[0] = ""
+    eleccion = list(eleccion)
+    eleccion.remove("N")
+    eleccion.remove("-")
+    eleccion = "".join(eleccion)
+    mensaje = " ".join(dato)
     identificador = generar_identificador(int(eleccion), id_publicacion)
     comentario = graph.put_object(parent_object=identificador, connection_name='comments', message=mensaje)
     if comentario:
-        print("Su comentario ha sido exitoso.")
+        linea = "Su comentario ha sido exitoso."
     else:
-        print("Ha ocurrido un error, intente nuevamente.")
+        linea = "Ha ocurrido un error, intente nuevamente."
+
+    return linea
+
 
 # funciones para otras funciones
 def seleccion_token(tipo_token, token_solo=False):
@@ -355,6 +375,4 @@ def limpiar_fecha(dato):
     formato_fecha = f"{dia}/{mes}/{anio}  {tiempo}"
 
     return formato_fecha
-
-
 
