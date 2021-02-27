@@ -678,11 +678,4 @@ def postear_imagen_ig(id_instagram):
     id_para_posteo = requests.post("https://graph.facebook.com/"+id_instagram+"/media?image_url="+url_imagen_subida+"&caption="+motivo+"&access_token="+token_empresarial).json()['id']
     requests.post("https://graph.facebook.com/"+id_instagram+"/media_publish?creation_id="+id_para_posteo+"&access_token="+token_empresarial)
 
-              
-#main
-def main():
-    # token: en función seleccion_token
-
-if __name__ == "__main__":
-    main()
-
+           

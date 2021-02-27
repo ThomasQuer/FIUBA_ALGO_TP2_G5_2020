@@ -9,6 +9,7 @@ bot.storage.drop()
 
 import os
 import time
+from flask import Flask, request
 from chatterbot import ChatBot
 from chatterbot import comparisons
 from chatterbot import response_selection
