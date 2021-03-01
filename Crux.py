@@ -9,14 +9,13 @@ bot.storage.drop()
 
 import os
 import time
-from chatterbot import ChatBot
+from chatterbot import ChatBots
 from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
 from TP2_G5 import mostrar_menu, ver_posts, dar_like_posteo, actualizar_posteo
 from TP2_G5 import subir_posteo, subir_foto, listar_amigos, actualizar_datos_pagina
 from TP2_G5 import comentar_objeto, listar_seguidores, listar_likes
-
 
 def capturar_peticiones(nombre, bot, seguir):
     """

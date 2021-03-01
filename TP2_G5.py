@@ -4,7 +4,6 @@ import requests
 import re
 import base64
 
-
 def mostrar_menu():
     """
     POST:
@@ -535,7 +534,7 @@ def visualizar_informacion_post_seleccionado_ig(informacion_post_seleccionado):
 def visualizar_comentarios_post_ig(diccionario_comentarios):
     """
     PRE:
-        diccionario_comentarios debe ser un diccionario con la siguiente estrucutra:
+        diccionario_comentarios debe ser un diccionario con la siguiente estructura:
             {numero comentario: [id comentario, texto comentrario], ...}
     POST:
         Visualiza los comentarios de un post y pregunta si el usuario desea responder a alguno.
@@ -679,9 +678,6 @@ def postear_imagen_ig(id_instagram):
     requests.post("https://graph.facebook.com/"+id_instagram+"/media_publish?creation_id="+id_para_posteo+"&access_token="+token_empresarial)
 
               
-#main
-def main():
-    # token: en función seleccion_token
 
 if __name__ == "__main__":
     main()
