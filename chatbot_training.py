@@ -45,7 +45,7 @@ for filename in os.listdir(directory):
             ' file'
         )
         training_data = (
-            open(os.path.join(directory, filename)).read().splitlines()
+            open(os.path.join(directory, filename),encoding="latin1").read().splitlines()
         )
         trainer = ListTrainer(chat)
         trainer.train(training_data)
