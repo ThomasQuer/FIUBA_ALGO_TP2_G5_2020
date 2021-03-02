@@ -40,39 +40,68 @@ def capturar_peticiones(nombre, bot, seguir):
         time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
         ", Crux, " + '"' + str(respuesta) + '"'
         )
+    if (str(respuesta).lower()).find("instagram") != -1:
+        if (str(respuesta).lower()).find("cuenta") != -1:
+            print('informacion cuenta\n\n\n\n')
 
-    if (str(respuesta).lower()).find("listando") != -1:
-        if (str(respuesta).lower()).find("seguís") != -1:
-            listar_likes()
-            
-        else:
-            ver_posts()
+        elif (str(respuesta).lower()).find("atributos") != -1:
+            print('mostrando atributos\n\n\n\n')
 
-    elif (str(respuesta).lower()).find("existentes") != -1:
-        if (str(respuesta).lower()).find("actualizar") != -1:
-            actualizar_posteo()
-        else:
-            dar_like_posteo()
+        elif (str(respuesta).lower()).find("posteo") != -1:
+            if (str(respuesta).lower()).find("insights") != -1:
+                print('mostrando insights\n\n\n\n')
+            elif (str(respuesta).lower()).find("información") != -1:
+                print('mostrando info post\n\n\n\n')
+            else:
+                print('mostrando posteos publicados\n\n\n\n')
 
-    elif (str(respuesta).lower()).find("subamos") != -1:
-        if (str(respuesta).lower()).find("foto") != -1:
-            subir_foto()
-        else:
-            subir_posteo()
+        elif (str(respuesta).lower()).find("comentario") != -1:
+            if (str(respuesta).lower()).find("mostra") != -1:           
+                print('viendo comentarios\n\n\n\n')
+            elif (str(respuesta).lower()).find("borra") != -1:
+                print('borrando comentario\n\n\n\n')
+            else:
+                print('respondiendo a comentario\n\n\n\n')
 
-    elif (str(respuesta).lower()).find("amigos") != -1:
-        listar_amigos()
+        elif (str(respuesta).lower()).find("hashtag") != -1:
+            print('mostrando hashtags\n\n\n\n')
 
-    elif (str(respuesta).lower()).find("datos") != -1:
-        actualizar_datos_pagina()
+        elif (str(respuesta).lower()).find("imagen") != -1:      
+            print('posteando\n\n\n\n')  
 
-    elif (str(respuesta).lower()).find("comentar") != -1:
-        comentar_objeto()
+    else:
+        if (str(respuesta).lower()).find("listando") != -1:
+            if (str(respuesta).lower()).find("seguís") != -1:
+                listar_likes()
+                
+            else:
+                ver_posts()
 
-    elif (str(respuesta).lower()).find("seguidores") != -1:
-        listar_seguidores()
+        elif (str(respuesta).lower()).find("existentes") != -1:
+            if (str(respuesta).lower()).find("actualizar") != -1:
+                actualizar_posteo()
+            else:
+                dar_like_posteo()
 
-    elif (str(respuesta).lower()).find("menú") != -1:
+        elif (str(respuesta).lower()).find("subamos") != -1:
+            if (str(respuesta).lower()).find("foto") != -1:
+                subir_foto()
+            else:
+                subir_posteo()
+
+        elif (str(respuesta).lower()).find("amigos") != -1:
+            listar_amigos()
+
+        elif (str(respuesta).lower()).find("datos") != -1:
+            actualizar_datos_pagina()
+
+        elif (str(respuesta).lower()).find("comentar") != -1:
+            comentar_objeto()
+
+        elif (str(respuesta).lower()).find("seguidores") != -1:
+            listar_seguidores()
+
+    if (str(respuesta).lower()).find("menú") != -1:
         mostrar_menu()
 
     elif (peticion.lower()).find("salir") != -1:

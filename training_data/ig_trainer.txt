@@ -1,6 +1,7 @@
 #cuenta
-Obteniendo información de la cuenta..
-Mostrame información de la cuenta
+11
+Obteniendo información de la cuenta de instagram ..
+Mostrame información de la cuenta de instagram
 ¡Enseguida! Obteniendo información de la cuenta.
 ¿Podrías mostrarme la información de la cuenta?
 ¡Por supuesto que sí! Obteniendo información de la cuenta.
@@ -22,39 +23,7 @@ Quiero información de la cuenta
 Mostrando información de la cuenta..
 Ver información de la cuenta
 ¡Enseguida! Mostrando la información de la cuenta.
-
-#atributo
-Mostrando atributos..
-Mostrame atributos
-Enseguida! Mostrando atributos..
-Mostrar atributos
-De inmediato! Mostrando atributos..
-atributos
-Entiendo quiere ver los atributos, se los busco enseguida
-¿Podrías mostrarme los atributos?
-¡Por supuesto que sí! Obteniendo los atributos.
-¿Me mostraria los atributos?
-¡Por supuesto que sí! Atributos de inmediato!
-¿Me mostrarías los atributos?
-¡Por supuesto que sí! Enseguida le muestro los atributos.
-Quisiera ver los atributos
-Buscando los atributos..
-Quisiera me mostrara los atributos
-Dalo por hecho! Buscando los atributos..
-Quisiera me muestre los atributos
-Enseguida! Buscando los atributos..
-Quisiera ver los atributos
-¡De inmediato! Mostrando los atributos..
-Quiero ver los atributos
-Obteniendo los atributos que solicita.
-Quiero me muestre los atributos
-Obteniendo los atributos que solicita.
-Quiero atributos
-Mostrando los atributos enseguida!
-Ver atributos
-¡Enseguida! Mostrando los atributos..
-
-#básica
+Información basica
 Mostrando información básica..
 Mostrame información básica.
 Enseguida! Mostrando información básica...
@@ -93,9 +62,42 @@ Enseguida le muestro la información básica que ha solicitado..
 Información basica
 Enseguida le muestro la información básica que ha solicitado..
 
+#atributo
+12
+Mostrando atributos de instagram ....
+Mostrame atributos de instagram
+Enseguida! Mostrando atributos..
+Mostrar atributos
+De inmediato! Mostrando atributos..
+atributos
+Entiendo quiere ver los atributos, se los busco enseguida
+¿Podrías mostrarme los atributos?
+¡Por supuesto que sí! Obteniendo los atributos.
+¿Me mostraria los atributos?
+¡Por supuesto que sí! Atributos de inmediato!
+¿Me mostrarías los atributos?
+¡Por supuesto que sí! Enseguida le muestro los atributos.
+Quisiera ver los atributos
+Buscando los atributos..
+Quisiera me mostrara los atributos
+Dalo por hecho! Buscando los atributos..
+Quisiera me muestre los atributos
+Enseguida! Buscando los atributos..
+Quisiera ver los atributos
+¡De inmediato! Mostrando los atributos..
+Quiero ver los atributos
+Obteniendo los atributos que solicita.
+Quiero me muestre los atributos
+Obteniendo los atributos que solicita.
+Quiero atributos
+Mostrando los atributos enseguida!
+Ver atributos
+¡Enseguida! Mostrando los atributos..
+
 #publicados
-Mostrando los posteos publicados..
-Mostrame posteos publicados
+13
+Mostrando los posteos publicados de instagram ..
+Mostrame posteos publicados de instagram
 Enseguida! Mostrando los posteos publicados..
 Mostrar posteos publicados
 De inmediato! Mostrando los posteos publicados..
@@ -156,75 +158,74 @@ Mostrando los posts publicados enseguida!
 Ver posts publicados
 ¡Enseguida! Mostrando los posts publicados.
 
-#identificador
-Mostrando el identificador del post..
-Mostrame el id del post
-Enseguida! Mostrando el identificador del post..
-Mostrar el id del post
-De inmediato! Mostrando identificador del post
-Id post
-Enseguida! Obteniendo identificador del post..
-¿Podrías mostrarme el id del post?
-¡Por supuesto que sí! Obteniendo el identificador del post..
-¿Me mostraria el id del post?
-¡Por supuesto que sí! El identificador del post de inmediato!
-¿Me mostrarías el id del post?
-¡Por supuesto que sí! Enseguida le muestro el identificador del post.
-Quisiera ver el id del post
-Buscando el identificador del post..
-Quisiera me mostrara el id del post
-Dalo por hecho! Buscando el identificador del post..
-Quisiera me muestre el id del post
-Enseguida! Buscando el identificador del post..
-Quisiera me muestre el id del post
-Enseguida! Buscando el identificador del post....
-Quisiera ver el id del post
-¡De inmediato! Mostrando el identificador del post..
-Quiero ver el id del post
-Obteniendo el identificador del post..
-Quiero me muestre el id del post
-Obteniendo el identificador del post..
-Quiero id post
-Mostrando lel identificador del post enseguida!
-Ver id post
-¡Enseguida! Mostrando el identificador del post..
+#posteo
+14
+Mostrando la información del posteo de instagram ...
+Mostrame la información del posteo de instagram
+Enseguida! Mostrando la información del posteo ...
+Mostrar la información del posteo
+De inmediato! Mostrando identificador del posteo
+Información posteo
+Enseguida! Obteniendo la información del posteo ...
+¿Podrías mostrarme la información del posteo ?
+¡Por supuesto que sí! Obteniendo la información del posteo ...
+¿Me mostraria la información del posteo ?
+¡Por supuesto que sí! La información del posteo de inmediato !
+¿Me mostrarías la información del posteo ?
+¡Por supuesto que sí! Enseguida le muestro la información del posteo .
+Quisiera ver la información del posteo
+Buscando la información del posteo ...
+Quisiera me mostrara la información del posteo
+Dalo por hecho! Buscando la información del posteo ...
+Quisiera me muestre la información del posteo
+Enseguida! Buscando la información del posteo ...
+Quisiera me muestre la información del posteo
+Enseguida! Buscando la información del posteo ...
+Quisiera ver la información del posteo
+¡De inmediato! Mostrando la información del posteo ...
+Quiero ver la información del posteo
+Obteniendo la información del posteo ...
+Quiero me muestre la información del posteo
+Obteniendo la información del posteo ...
+Quiero info posteo
+Mostrando la información del posteo enseguida!
+Ver info posteo de instagram
+¡Enseguida! Mostrando la información del posteo de instagram...
 
-#post
-Mostrando la información del post..
-Mostrame la información del post
-Enseguida! Mostrando la información del post..
-Mostrar la información del post
-De inmediato! Mostrando identificador del post
-Información post
-Enseguida! Obteniendo la información del post..
-¿Podrías mostrarme la información del post?
-¡Por supuesto que sí! Obteniendo la información del post..
-¿Me mostraria la información del post?
-¡Por supuesto que sí! La información del post de inmediato!
-¿Me mostrarías la información del post?
-¡Por supuesto que sí! Enseguida le muestro la información del post.
-Quisiera ver la información del post
-Buscando la información del post..
-Quisiera me mostrara la información del post
-Dalo por hecho! Buscando la información del post..
-Quisiera me muestre la información del post
-Enseguida! Buscando la información del post..
-Quisiera me muestre la información del post
-Enseguida! Buscando la información del post....
-Quisiera ver la información del post
-¡De inmediato! Mostrando la información del post..
-Quiero ver la información del post
-Obteniendo la información del post..
-Quiero me muestre la información del post
-Obteniendo la información del post..
-Quiero info post
-Mostrando la información del post enseguida!
-Ver info post
-¡Enseguida! Mostrando la información del post..
+#insights
+15
+Visualizando los insights del posteo de instagram ..
+Ver insights del posteo de instagram
+Enseguida se estarán visualizando los insights del posteo..
+Conocer insights del posteo
+De inmediato!  Buscando los insights del posteo..
+Mostrarme los insights del posteo
+De inmediato!  Buscando los insights del posteo..
+Insights del posteo
+Enseguida! Buscando los insights del posteo..
+¿Podrías mostrarme los insights del posteo?
+¡Por supuesto que sí! Mostrando los insights del posteo..
+¿Me mostraría los insights del posteo?
+¡Por supuesto que sí! Verá los insights del posteo de inmediato!
+¿Me mostrarías los insights del posteo?
+¡Por supuesto que sí! Mostrando insights del posteo..
+Quisiera ver insights del posteo
+Mostrando insights del posteo..
+Quisiera me muestre los insights del posteo
+Mostrando insights del posteo..
+Quiero ver insights del posteo..
+Eso me lo esperaba! Enseguida le mostrare los insights del posteo..
+Quiero me muestre los insights del posteo..
+De inmediato! Mostrando insights del posteo..
+Quiero visualizar insights del posteo..
+No diga mas! Visualizando insights del posteo de inmediato!
+Insights
+Enseguida! Buscando los insights del posteo..
 
 #comentarios
-Mostrando los comentarios de un post..
-Mostrame los comentarios del post
+16
+Mostrando los comentarios de un post de instagram ..
+Mostrame los comentarios del post de instagram
 Enseguida! Mostrando los comentarios del post..
 Mostrar los comentarios del post
 De inmediato! Mostrando los comentarios del post
@@ -259,46 +260,10 @@ Mostrando los comentarios del post enseguida!
 Ver comentarios post
 ¡Enseguida! Mostrando los comentarios del post..
 
-#borrando
-Borrando los comentarios del post..
-Borrar los comentarios del post
-Enseguida! Borrando los comentarios del post..
-Borrar los comentarios del post
-De inmediato!  Borrando los comentarios del post
-Borrar comentarios post
-Enseguida! Borrando los comentarios del post..
-¿Podrías borrar los comentarios del post?
-¡Por supuesto que sí! Borrando los comentarios del post..
-¿Me borraría los comentarios del post?
-¡Por supuesto que sí! Borrando comentarios del post de inmediato!
-¿Me borrarías los comentarios del post?
-¡Por supuesto que sí! Borrando los comentarios del post.
-Quisiera borrar los comentarios del post
-Borrando los comentarios del post..
-Quisiera me borrara los comentarios del post
-Dalo por hecho! Borrando los comentarios del post..
-Quisiera me borre los comentarios del post
-Enseguida! Borrando los comentarios del post..
-Quisiera borrar los comentarios del post
-Enseguida! Borrando los comentarios del post....
-Quisiera borrar los comentarios del post
-¡De inmediato! Borrando los comentarios del post..
-Quiero eliminar los comentarios del post
-Borrando los comentarios del post, en instantes será eliminado..
-Quiero me borre los comentarios del post
-Borrando los comentarios del post..
-Quiero borrar comentarios del post
-Borrando los comentarios del post enseguida!
-Borrar comentarios del post
-¡Enseguida! Borrando los comentarios del post..
-Quiero borrar comentarios post
-Borrando los comentarios del post enseguida!
-Borrar comentarios post
-¡Enseguida! Borrando los comentarios del post..
-
 #Respondiendo
-Respondiendo el comentario..
-Responder al comentario
+17
+Respondiendo el comentario de instagram ..
+Responder al comentario de instagram
 Enseguida se estará respondiendo al comentario..
 Responder los comentarios del post
 De inmediato!  Respondiendo el comentario..
@@ -321,38 +286,48 @@ No diga mas! Respondiendo al comentario de inmediato!
 Responder comentario
 En breve estaremos respondiendo al comentario..
 
-#insights
-Visualizando los insights del post..
-Ver insights del post
-Enseguida se estarán visualizando los insights del post..
-Conocer insights del post
-De inmediato!  Buscando los insights del post..
-Mostrarme los insights del post
-De inmediato!  Buscando los insights del post..
-Insights del post
-Enseguida! Buscando los insights del post..
-¿Podrías mostrarme los insights del post?
-¡Por supuesto que sí! Mostrando los insights del post..
-¿Me mostraría los insights del post?
-¡Por supuesto que sí! Verá los insights del post de inmediato!
-¿Me mostrarías los insights del post?
-¡Por supuesto que sí! Mostrando insights del post..
-Quisiera ver insights del post
-Mostrando insights del post..
-Quisiera me muestre los insights del post
-Mostrando insights del post..
-Quiero ver insights del post..
-Eso me lo esperaba! Enseguida le mostrare los insights del post..
-Quiero me muestre los insights del post..
-De inmediato! Mostrando insights del post..
-Quiero visualizar insights del post..
-No diga mas! Visualizando insights del post de inmediato!
-Insights
-Enseguida! Buscando los insights del post..
+#borrar
+18
+Borrando el comentario del post de instagram ..
+Borrar el comentario del post de instagram
+Enseguida! Borrando el comentario del post de instagram ..
+Borrar el comentario del post
+De inmediato!  Borrando el comentario del post de instagram ..
+Borrar comentario post
+Enseguida! Borrando el comentario del post de instagram ..
+¿Podrías borrar el comentario del post?
+¡Por supuesto que sí! Borrando el comentario del post de instagram ..
+¿Me borraría el comentario del post?
+¡Por supuesto que sí! Borrando el comentario del post de instagram ..
+¿Me borrarías el comentario del post?
+¡Por supuesto que sí! Borrando el comentario del post de instagram ..
+Quisiera borrar el comentario del post
+Borrando el comentario del post de instagram ..
+Quisiera me borrara el comentario del post
+Dalo por hecho! Borrando el comentario del post de instagram ..
+Quisiera me borre el comentario del post
+Enseguida! Borrando el comentario del post de instagram ..
+Quisiera borrar el comentario del post
+Enseguida! Borrando el comentario del post de instagram ..
+Quisiera borrar el comentario del post
+¡De inmediato! Borrando el comentario del post de instagram ..
+Quiero eliminar el comentario del post
+Borrando el comentario del post de instagram , en instantes será eliminado..
+Quiero me borre el comentario del post
+Borrando el comentario del post de instagram ..
+Quiero borrar comentario del post
+Borrando el comentario del post de instagram ..
+Borrar comentario del post
+¡Enseguida! Borrando el comentario del post de instagram ..
+Quiero borrar comentario post
+Borrando el comentario del post de instagram ..
+Borrar comentario post
+¡Enseguida! Borrando el comentario del post de instagram ..
 
 #hashtag
-Accediendo a busqueda de post mediante hashtag..
-Buscar por hashtag
+19
+Accediendo a busqueda de post mediante hashtag  de instagram..
+Buscar por hashtag  de instagram
 Enseguida se estará buscando post por hashtag..
 Buscar post por hashtag
 Enseguida se estará buscando post por hashtag..
@@ -380,8 +355,9 @@ Hashtag de post
 En breve estaremos buscando el post con el hashtag de interes..
 
 #imagen
-Posteando imagen..
-Subir imagen
+20
+Posteando imagen en instagram ..
+Subir imagen  en instagram
 Enseguida se estará subiendo una imagen
 Postear imagen
 Enseguida se estará subiendo una imagen
