@@ -23,7 +23,16 @@ def mostrar_menu():
         "9. Mostrar la cantidad de seguidores.\n"
         "10. Mostrar las páginas seguidas.\n\n"
         "INSTAGRAM:\n\n"
-        "En construcción.\n\n"
+        "11. Mostrar información de la cuenta de Instagram.\n"
+        "12. Mostrar posts publicados en Instagram\n"
+        "13. Mostrar atributos de un post en Instagram\n"
+        "14. Mostrar perspestivas de un post en Instagram\n"
+        "15. Responder a un comentario en Instagram\n"
+        "16. Borrar un comentario en Instagram\n"
+        "17. Buscar un hashtag\n"
+        "18. Subir un posteo a Instagram\n\n"
+
+
         "Elige una opción a ejecutar.\n"
     )
 

@@ -9,7 +9,7 @@ bot.storage.drop()
 
 import os
 import time
-from chatterbot import ChatBots
+from chatterbot import ChatBot
 from chatterbot import comparisons
 from chatterbot import response_selection
 from chatterbot import filters
