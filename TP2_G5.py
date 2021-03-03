@@ -29,7 +29,15 @@ def mostrar_menu():
         "9. Mostrar la cantidad de seguidores.\n"
         "10. Mostrar las páginas seguidas.\n\n"
         "INSTAGRAM:\n\n"
-        "En construcción.\n\n"
+        "11. Mostrar información de la cuenta.\n"
+        "12. Ver posteos hechos.\n"
+        "13. Ver comentarios.\n"
+        "14. Comentar un posteo.\n"
+        "15. Responder un comentario.\n"
+        "16. Borrar un comentario.\n"
+        "17. Mostrar alcance de un posteo específico.\n"
+        "18. Buscar un hashtag.\n"
+        "19. Subir un nuevo posteo.\n\n"
         "Elige una opción a ejecutar.\n"
     )
 
@@ -516,21 +524,18 @@ def subir_imagen_servidor():
 
 
 # Funciones de acciones
-def mostrar_informacion_basica_ig():  # De acá podemos sacar cuatro funciones simples o una lista.
+def mostrar_informacion_basica():
     """
     POST:
         visualiza la informacion del atributo seleccionado
     """
     informacion_usuario_ig = obtener_informacion_cuenta_ig()
     atributos_usuario = list(informacion_usuario_ig.keys())
-    print('los atributos disponibles son los siguientes: ')
-    print(atributos_usuario)
-    atributo_seleccionado = input('Escriba que atributo quiere visualizar: ')
-    while atributo_seleccionado not in atributos_usuario:
-        atributo_seleccionado = input('ERROR, escriba correcamente que atributo quiere visualizar: ')
-
-    print('el valor del atributo {0} es: {1}'.format(
-        atributo_seleccionado, informacion_usuario_ig[atributo_seleccionado]))
+    print(
+        "Usted tiene {0} seguidores.\nSigue a {1} cuentas.\n"
+        "Tiene un total de {2} publicaciones realizadas.\nLa URL de su imagen es: {3}".format(
+            informacion_usuario_ig['followers_count'], informacion_usuario_ig['follows_count'],
+            informacion_usuario_ig['media_count'], informacion_usuario_ig['profile_picture_url']))
 
 
 def visualizar_post_publicados_ig():
@@ -545,7 +550,7 @@ def visualizar_post_publicados_ig():
     for post in range(len(post_publicados)):
         print(
             "***********************************************************\n" +
-            'post Nº {0}:\n\nMensaje: {4},\n\nlink: {1} , tiene {2} likes y {3} comentarios.\n'.
+            'post Nº {0}:\n\nMensaje: {4}\n\nlink: {1} , tiene {2} likes y {3} comentarios.\n'.
             format(post, post_publicados[post]['permalink'], post_publicados[post]['like_count'], post_publicados[post]['comments_count'], post_publicados[post]['caption']))
         lista_id_post.append(post_publicados[post]['id'])
 
@@ -698,7 +703,7 @@ def postear_imagen_ig():
     else:
         print("Ups! Algo ha salido mal.")
 
-              
+
 #main
 def main():
     # token: en función seleccion_token
