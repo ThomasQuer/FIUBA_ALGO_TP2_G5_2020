@@ -16,6 +16,8 @@ from chatterbot import filters
 from TP2_G5 import mostrar_menu, ver_posts, dar_like_posteo, actualizar_posteo
 from TP2_G5 import subir_posteo, subir_foto, listar_amigos, actualizar_datos_pagina
 from TP2_G5 import comentar_objeto, listar_seguidores, listar_likes
+from TP2_G5 import visualizar_informacion_cuenta_ig, mostrar_informacion_basica_ig, visualizar_post_publicados_ig, visualizar_informacion_post_seleccionado_ig
+from TP2_G5 import visualizar_insights_post, visualizar_comentarios_post_ig, borrar_comentario, responder_comentario, visualizar_post_hashtag, postear_imagen_ig
 
 def capturar_peticiones(nombre, bot, seguir):
     """
@@ -41,33 +43,35 @@ def capturar_peticiones(nombre, bot, seguir):
         ", Crux, " + '"' + str(respuesta) + '"'
         )
     if (str(respuesta).lower()).find("instagram") != -1:
+
         if (str(respuesta).lower()).find("cuenta") != -1:
-            print('informacion cuenta\n\n\n\n')
+            visualizar_informacion_cuenta_ig()
 
         elif (str(respuesta).lower()).find("atributos") != -1:
-            print('mostrando atributos\n\n\n\n')
-
-        elif (str(respuesta).lower()).find("posteo") != -1:
-            if (str(respuesta).lower()).find("insights") != -1:
-                print('mostrando insights\n\n\n\n')
-            elif (str(respuesta).lower()).find("información") != -1:
-                print('mostrando info post\n\n\n\n')
-            else:
-                print('mostrando posteos publicados\n\n\n\n')
+            mostrar_informacion_basica_ig()
 
         elif (str(respuesta).lower()).find("comentario") != -1:
             if (str(respuesta).lower()).find("mostra") != -1:           
-                print('viendo comentarios\n\n\n\n')
+                visualizar_comentarios_post_ig()
             elif (str(respuesta).lower()).find("borra") != -1:
-                print('borrando comentario\n\n\n\n')
+                borrar_comentario()
             else:
-                print('respondiendo a comentario\n\n\n\n')
+                responder_comentario()
 
         elif (str(respuesta).lower()).find("hashtag") != -1:
-            print('mostrando hashtags\n\n\n\n')
+            visualizar_post_hashtag()
 
         elif (str(respuesta).lower()).find("imagen") != -1:      
-            print('posteando\n\n\n\n')  
+            postear_imagen_ig()
+
+        elif (str(respuesta).lower()).find("post") != -1:
+            if (str(respuesta).lower()).find("insights") != -1:
+                visualizar_insights_post()
+            elif (str(respuesta).lower()).find("información") != -1:
+                visualizar_informacion_post_seleccionado_ig()
+            else:
+                visualizar_post_publicados_ig()
+
 
     else:
         if (str(respuesta).lower()).find("listando") != -1:
