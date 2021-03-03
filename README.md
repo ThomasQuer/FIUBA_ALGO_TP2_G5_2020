@@ -5,14 +5,14 @@ Las consultas a través de Messenger deben realizarse ejecutando chatbot.py y po
 
 A continuación se detallan los archivos presentados:
 
-# training_data
-Contiene los archivos que chatbot_training.py necesitará para completar el aprendizaje.
-
 # Crux.py (Salida en terminal)
 Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubicados en la carpeta 'training_data'. La conversación realizada con el usuario se almacena en un archivo extensión .log con fecha y horario integrado. Muestra menú de opciones al empezar, luego responde a las entradas realizadas a través del teclado por el usuario.
 
 # chatbot_training.py
 Se encarga de la creación y aprendizaje de 'Crux', debe ser el primero en ejecutarse.
+
+# training_data (carpeta)
+Contiene los archivos que chatbot_training.py necesitará para completar el aprendizaje: fb_trainer, ig_traines y saludos_trainer.
 
 # TP2_G5.py
 Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instagram.
@@ -32,7 +32,7 @@ Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
   La función log:
   Almacena la conversación entre el bot y el usuario.
  
- # archivo.txt
+ # archivo.log
 Muestra el historial de la conversación establecida con el asistente.
 
 # funciones_fb.py
