@@ -4,15 +4,6 @@ import requests
 import re
 import base64
 
-<<<<<<< HEAD
-=======
-TOKEN_CUENTA_EMPRESARIAL = 'EAAPQlFICfVYBAHQTuF4SA84zmZBZCWZAdJH7qIeAvL6JRYY2gZCsIwwhua67QHtVYJFCOpa3sLpN2lwkwddmIqy8ZCfejRaeReWcExZCtDzaGW6ifnWrwXlD1DZAS36T5pyYSRujfLxNcNDZBZBeA9PqZAVOzHGNkeYvAhbSKUvDsbyAZDZD'
-TOKEN_PAGINA_EMPRESARIAL = 'EAAPQlFICfVYBAGksuFWsbDomJ5DFFYuL4MQ5gzIKYDXVfsJRzCk9uoNK9hZCcnDSdiDiDz5Y4HFvO1G7r63Jnx1sZA5bj3cT9pQVAeyUdMUaVd6VqX7BPMztN8jYDrqdIN7fIeYc0ZBwEKZB9ZCZCryTZAtmXFrJua76OPJZC8bYLwZDZD'
-TOKEN_CUENTA_CONSUMIDOR = 'EAADBGgWWrIABAOCBW4316mP4J3D5iqZAcEQ48wKBrftnoOFnb452KPO4wdlfpN5MAWu8h3DGyPdqZCLMjUgH9A6nJLZASMnnxQZCHwELkM47biGgc3WJbkXLZAxOMknHblPJLvnZCsgwtfqoagitQaY0gHpRoxDbp2o56xWDZBDNwZDZD'
-TOKEN_PAGINA_CONSUMIDOR = 'EAADBGgWWrIABAMXUFHlijThaTleKULX1yFhNPZCilHQipyAzdMZBir14OI8C981hIsyvpiidZBR3FpZAC2XoAkZAgvZCaf4UFf2PsfG3bzKBYPGWEZAnS9JhIKKZCZAYNL1TaEzjJbOzucssde7kny7zz1pttFZBtX9oUbobmT9GRRfwZDZD'
-
-
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
 def mostrar_menu():
     """
     POST:
@@ -313,13 +304,13 @@ def seleccion_token(tipo_token, token_solo=False):
         del tipo 'facebook.GraphAPI' cuando token_solo = False.
     """
     if tipo_token == "empresarial_cuenta":
-        token = TOKEN_CUENTA_EMPRESARIAL
+        token = "EAAPQlFICfVYBAHQTuF4SA84zmZBZCWZAdJH7qIeAvL6JRYY2gZCsIwwhua67QHtVYJFCOpa3sLpN2lwkwddmIqy8ZCfejRaeReWcExZCtDzaGW6ifnWrwXlD1DZAS36T5pyYSRujfLxNcNDZBZBeA9PqZAVOzHGNkeYvAhbSKUvDsbyAZDZD"
     elif tipo_token == "empresarial_pagina":
-        token = TOKEN_PAGINA_EMPRESARIAL
+        token = "EAAPQlFICfVYBAGksuFWsbDomJ5DFFYuL4MQ5gzIKYDXVfsJRzCk9uoNK9hZCcnDSdiDiDz5Y4HFvO1G7r63Jnx1sZA5bj3cT9pQVAeyUdMUaVd6VqX7BPMztN8jYDrqdIN7fIeYc0ZBwEKZB9ZCZCryTZAtmXFrJua76OPJZC8bYLwZDZD"
     elif tipo_token == "consumidor_cuenta":
-        token = TOKEN_CUENTA_CONSUMIDOR
+        token = "EAADBGgWWrIABAOCBW4316mP4J3D5iqZAcEQ48wKBrftnoOFnb452KPO4wdlfpN5MAWu8h3DGyPdqZCLMjUgH9A6nJLZASMnnxQZCHwELkM47biGgc3WJbkXLZAxOMknHblPJLvnZCsgwtfqoagitQaY0gHpRoxDbp2o56xWDZBDNwZDZD"
     elif tipo_token == "consumidor_pagina":
-        token = TOKEN_PAGINA_CONSUMIDOR
+        token = "EAADBGgWWrIABAMXUFHlijThaTleKULX1yFhNPZCilHQipyAzdMZBir14OI8C981hIsyvpiidZBR3FpZAC2XoAkZAgvZCaf4UFf2PsfG3bzKBYPGWEZAnS9JhIKKZCZAYNL1TaEzjJbOzucssde7kny7zz1pttFZBtX9oUbobmT9GRRfwZDZD"
     graph = facebook.GraphAPI(token)
     if not token_solo:
         return token, graph
@@ -421,13 +412,7 @@ def visualizar_informacion_cuenta_ig():
         diccionario_informacion['follows_count'],diccionario_informacion['media_count'], diccionario_informacion['profile_picture_url'])
     )
 
-
-<<<<<<< HEAD
-
 def seleccionar_atributo_para_mostrar():
-=======
-def mostrar_informacion_basica_ig():
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     """
     POST:
         visualiza la informacion del atributo seleccionado
@@ -439,10 +424,8 @@ def mostrar_informacion_basica_ig():
     atributo_seleccionado = str(input('Escriba que atributo quiere visualizar: '))
     while atributo_seleccionado not in atributos_usuario:
         atributo_seleccionado = str(input('ERROR, escriba correcamente que atributo quiere visualizar: '))
+    return atributo_seleccionado
 
-    print('el valor del atributo {0} es: {1}'.format(atributo_seleccionado, informacion_usuario_ig[atributo_seleccionado]))
-
-<<<<<<< HEAD
 def mostrar_informacion_basica_ig():
     """
     PRE:
@@ -459,23 +442,12 @@ def mostrar_informacion_basica_ig():
     
 def obtener_post_publicados_ig():
     """
-
-=======
-
-def obtener_post_publicados_ig():
-    """
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     POST:
         Devuelve un diccionario con la informacion de los post realizados por el usuario, con la siguiente estructura:
         {media_url:, permalink:, caption:, comments_count:, ig_id:, like_count:, media_type:, owner: id: }
         atributo_selecionado debe ser un str con el atributo que se desea visualizar
     """
-<<<<<<< HEAD
     id_instagram = str(obtener_informacion_cuenta_ig()['id'])
-=======
-    informacion = obtener_informacion_cuenta_ig()
-    id_instagram = informacion['id']
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True) 
     post_publicados = requests.get("https://graph.facebook.com/v9.0/"+id_instagram+"/media?fields=media_url,permalink,caption,comments_count,ig_id,like_count,media_type,owner, comments&access_token="+token_empresarial).json()
     return post_publicados['data']
@@ -486,25 +458,12 @@ def visualizar_post_publicados_ig():
     POST:
         Visualiza los post publicados de la siguiente manera:
         numero del posteo, id del posteo, link del posteo, cantidad de likes y cantidad comentarios
-<<<<<<< HEAD
     """    
     post_publicados = obtener_post_publicados_ig()
     print('A continuación se muestra información de los posts publicados:')
     for post in range(len(post_publicados)):
         print('post N {0}: ID: {2}, link: {1} '.
         format(post, post_publicados[post]['permalink'], post_publicados[post]['id'] ))
-=======
-    """
-    lista_id_post = []
-    post_publicados = obtener_post_publicados_ig()      
-    print('A continuación se muestra información de los posts publicados:')
-    for post in range(len(post_publicados)):
-        print('post Nº {0}: ID: {4}, link: {1} , tiene {2} likes y {3} comentarios.'.
-        format(post, post_publicados[post]['permalink'], post_publicados[post]['like_count'], post_publicados[post]['like_count'], post_publicados[post]['id'] ))
-        lista_id_post.append(post_publicados[post]['id'])
-
-    return lista_id_post
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
 
 
 def validar_entero(valor, rango):
@@ -525,27 +484,16 @@ def obtener_id_post_ig():
     POST:
         para el numero de post seleccionado, devuelve el id del mismo.
     """
-<<<<<<< HEAD
     post_publicados = obtener_post_publicados_ig()           
     visualizar_post_publicados_ig()
     numero_de_post_seleccionado = input('seleccion el numero del post del cual quiere obtener el ID: ')
-    numero_de_post_seleccionado = validacion_entero(numero_de_post_seleccionado, len(post_publicados))
+    numero_de_post_seleccionado = validar_entero(numero_de_post_seleccionado, len(post_publicados))
     id_post = post_publicados[numero_de_post_seleccionado]['id']
     print('el id del post es ', id_post)
     return id_post
 
 
 def obtener_informacion_post_ig():
-=======
-    lista_id_post = visualizar_post_publicados_ig()
-    numero_de_post_seleccionado = input('Seleccione el número del post del cual quiere obtener información: ')
-    numero_de_post_seleccionado = validar_entero(numero_de_post_seleccionado, len(lista_id_post)-1)
-    id_post = lista_id_post[numero_de_post_seleccionado]
-    return id_post
-
-
-def obtener_informacion_post_ig(): # Revisar
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     """
     POST:
         obtiene informacion de un post particular, con la estructura de un diccionario, de la forma de:
@@ -560,13 +508,9 @@ def obtener_informacion_post_ig(): # Revisar
             {numero comentario: [id comentario, texto comentrario], ...}
     """ 
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
-<<<<<<< HEAD
     media_id = obtener_id_post_ig()
-=======
-    id_post = obtener_id_post_ig()
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     informacion_post_seleccionado = requests.get("https://graph.facebook.com/v9.0/"+
-                            id_post+"?fields=like_count,id,comments_count,caption,ig_id,media_type,owner,media_url,permalink,comments&access_token="
+                            media_id+"?fields=like_count,id,comments_count,caption,ig_id,media_type,owner,media_url,permalink,comments&access_token="
                             +token_empresarial).json()
     diccionario_comentarios = {}
 
@@ -581,14 +525,8 @@ def visualizar_informacion_post_seleccionado_ig():
     POST:
         Visualiza la informacion de un post
     """ 
-<<<<<<< HEAD
     informacion_post_seleccionado = obtener_informacion_post_ig()[0]
     diccionario_informacion_post = {'me_gusta': informacion_post_seleccionado['like_count'],
-=======
-    tupla = obtener_informacion_post_ig()
-    informacion_post_seleccionado = tupla[0]
-    diccionario_informacion_post = {'likes': informacion_post_seleccionado['like_count'],
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     "motivo": informacion_post_seleccionado['caption'],
     "tipo": informacion_post_seleccionado['media_type'],
     "propietario": informacion_post_seleccionado['owner']['id'],
@@ -601,7 +539,6 @@ def visualizar_informacion_post_seleccionado_ig():
         elemento_visualizar = input('ERROR, selecione un elemento para visualizar:\n')
     print('el elemento seleccionado es el "{}" y su valor es {}'.format(elemento_visualizar, diccionario_informacion_post[elemento_visualizar]))
 
-<<<<<<< HEAD
     
 def visualizar_comentarios_post_ig():
     """
@@ -616,38 +553,16 @@ def visualizar_comentarios_post_ig():
         print('Comentario N.{}: {}'.format(elementos, diccionario_comentarios[elementos][0]))
 
         
-=======
-
-def visualizar_comentarios_post_ig():
-    """
-    POST:
-        Visualiza los comentarios de un post y pregunta si el usuario desea responder a alguno.
-    """ 
-    tupla = obtener_informacion_post_ig()
-    diccionario_comentarios = tupla[1]
-    for elementos in diccionario_comentarios.keys():
-        print('Comentario N.{}: {}'.format(elementos, diccionario_comentarios[elementos][0]))
-
-
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
 def obtener_id_comentario():
     """
     POST:
         obtiene el ID de un comentario en particular
     """ 
-<<<<<<< HEAD
     diccionario_comentarios = obtener_informacion_post_ig()[1]
     visualizar_comentarios_post_ig()    
     numero_comentario = input('seleccione el numero de comentario:')
-    numero_comentario = validacion_entero(numero_comentario, len(diccionario_comentarios))
-    id_comentario = diccionario_comentarios[numero_comentario][1]
-=======
-    tupla = obtener_informacion_post_ig()
-    diccionario_comentarios = tupla[1]
-    numero_comentario = input('seleccione el numero de comentario:')
     numero_comentario = validar_entero(numero_comentario, len(diccionario_comentarios))
-    id_comentario = diccionario_comentarios[str(numero_comentario)][1]
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
+    id_comentario = diccionario_comentarios[numero_comentario][1]
     return id_comentario
 
 
@@ -656,23 +571,14 @@ def borrar_comentario():
     POST:
         Borra el comentario seleccionado
     """ 
-<<<<<<< HEAD
     id_comentario = str(obtener_id_comentario())
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True) 
-=======
-    token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
-    id_comentario = obtener_id_comentario()
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     try:
         requests.delete("https://graph.facebook.com/v9.0/"+id_comentario+"?access_token="+token_empresarial).json()
     except:
         raise TypeError("no se pudo completar la operación") 
 
-<<<<<<< HEAD
         
-=======
-
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
 def responder_comentario():
     """
     POST:
@@ -688,11 +594,7 @@ def responder_comentario():
     except:
         raise TypeError("No se pudo completar la operación") 
 
-<<<<<<< HEAD
         
-=======
-
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
 def visualizar_insights_post():
     """
     POST: 
@@ -702,7 +604,6 @@ def visualizar_insights_post():
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
     id_post = obtener_id_post_ig()
     insights = ['impressions', 'reach', 'engagement', 'saved']
-<<<<<<< HEAD
     try:
         for elementos in insights:
             insights_media = requests.get("https://graph.facebook.com/v9.0/"+
@@ -717,20 +618,6 @@ def visualizar_insights_post():
 
 
 def buscar_hashtag():
-=======
-    
-    for elementos in insights:
-        insights_media = requests.get("https://graph.facebook.com/v9.0/"+
-                                    id_post+"/insights?metric="+
-                                    elementos+"&access_token="+
-                                    token_empresarial).json()
-        print('el atritbuto "{0}" del post es {1} ({2})'.format(insights_media['data'][0]['title'],
-                                                    insights_media['data'][0]['values'][0]['value'], 
-                                                    insights_media['data'][0]['description']))
-
-
-def visualizar_post_hashtag():
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     """
     POST:
         busca el hashtag ingresado y devuelve un diccionario de la forma:
@@ -754,8 +641,7 @@ def visualizar_post_hashtag():
     diccionario_posts_hashtag = {}
     for post in range(len(info_hashtag)):
         diccionario_posts_hashtag[post] = [info_hashtag[post]['permalink'], info_hashtag[post]['id']]
-
-<<<<<<< HEAD
+    return diccionario_posts_hashtag
 
 def visualizar_post_hashtag():
     """
@@ -763,8 +649,6 @@ def visualizar_post_hashtag():
         visualiza los post con el hashtag seleccionado
     """                                        
     diccionario_posts_hashtag = buscar_hashtag()
-=======
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     for elemento in diccionario_posts_hashtag.keys():
         print('Post N.{}, url:{}, post ID:{}'.format(elemento, diccionario_posts_hashtag[elemento][0], diccionario_posts_hashtag[elemento][1]))
 
@@ -793,12 +677,8 @@ def postear_imagen_ig():
     """
     POST:
         Postea una foto en instagram 
-<<<<<<< HEAD
     """  
     id_instagram = str(obtener_informacion_cuenta_ig()['id'])
-=======
-    """
->>>>>>> 173c8e7c716fb1b4f50dcb976d37426abe3f2fed
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
     informacion = obtener_informacion_cuenta_ig()
     id_instagram = informacion['id']
