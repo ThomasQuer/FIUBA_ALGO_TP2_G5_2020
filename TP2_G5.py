@@ -30,7 +30,7 @@ def mostrar_menu():
         "10. Mostrar las páginas seguidas.\n\n"
         "INSTAGRAM:\n\n"
         "11. Mostrar información de la cuenta.\n"
-        "12. Ver posteos hechos.\n"
+        "12. Ver posteos publicados.\n"
         "13. Ver comentarios.\n"
         "14. Comentar un posteo.\n"
         "15. Responder un comentario.\n"
@@ -475,7 +475,7 @@ def obtener_id_comentario(diccionario_comentarios):
     for elementos in diccionario_comentarios.keys():
         print('Comentario N.{}: {}'.format(elementos, diccionario_comentarios[elementos][0]))
 
-    numero_comentario = input('seleccione el numero de comentario:')
+    numero_comentario = input('seleccione el numero de comentario: ')
     numero_comentario = validar_rango(numero_comentario, len(diccionario_comentarios)-1)
     id_comentario = diccionario_comentarios[int(numero_comentario)][1]
 
@@ -618,7 +618,7 @@ def responder_comentario():
     existe = verificar_existencia_comentario(diccionario_comentarios)
     if existe:
         id_comentario = obtener_id_comentario(diccionario_comentarios)
-        texto_respuesta = input('ingrese el texto de la respuesta para comentario seleccionado: ')
+        texto_respuesta = input('ingrese el texto de la respuesta para el comentario seleccionado: ')
         texto_respuesta = texto_respuesta.replace(' ', '%20')
         responder = requests.post(
             "https://graph.facebook.com/v9.0/" + id_comentario + "/replies?message=" + texto_respuesta +
