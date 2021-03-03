@@ -1,5 +1,5 @@
 # Crux Bot
-Crux es un asistente para las redes sociales de Facebook e Instangram.
+Crux es un asistente para las redes sociales de Facebook e Instagram.
 Para consultar al asistente Crux desde la terminal debe ejecutarse Crux.py.
 Las consultas a través de Messenger deben realizarse ejecutando chatbot.py y por medio del canal de mensajes en la página de facebook 'Crux Bot Página'. En el caso de realizar la consulta por esta vía al ejecutar chatbot.py es necesario se genere un túnel activo para la conexión entre el localhost y la aplicación.
 
@@ -15,7 +15,7 @@ Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubic
 Se encarga de la creación y aprendizaje de 'Crux', debe ser el primero en ejecutarse.
 
 # TP2_G5.py
-Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instangram.
+Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instagram.
 
 # Justificación.txt
 Respecto a lo solicitado en el trabajo práctico se agregan justificaciones de lo alcanzado en las funciones y las limitaciones encontradas.
@@ -36,7 +36,7 @@ Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
 Muestra el historial de la conversación establecida con el asistente.
 
 # funciones_fb.py
-Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instangram modificados de manera tal que puedan ser utilizados en la salida por Messenger.
+Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instagram modificados de manera tal que puedan ser utilizados en la salida por Messenger.
 
 # Paquetes necesarios para lograr salida a través de messenger
  Se necesita tener integrado Flask:
