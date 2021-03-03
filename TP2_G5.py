@@ -165,7 +165,7 @@ def actualizar_posteo():
 def subir_posteo():
     """
     POST:
-        permite escribir un texto y lo publica en la página de Crux
+        permite escribir un texto, lo publica en la página de Crux
         e informa el resultado de la acción.
     """
     # Se selecciona token de pagina desde una app empresarial y se utiliza api
@@ -182,7 +182,7 @@ def subir_posteo():
 def subir_foto():
     """
     POST:
-        Solicita al usuario que indique la ubicación de una foto y la publica en la página de Crux
+        Solicita al usuario que indique la ubicación de una foto, la publica en la página de Crux
         e informa el resultado de la acción.
     """
     # El posteo foto es en la pagina de Crux:
@@ -253,7 +253,7 @@ def comentar_objeto():
     """
     POST:
         permite escribir un comentario en el objeto cuyo id es solicitado al usuario.
-        Al finalizar, devuelve el resultado de la acción.
+        Al finalizar, muestra el resultado de la acción.
     """
     token, graph = seleccion_token("empresarial_pagina")
     id_publicacion = ver_posts()
@@ -283,7 +283,7 @@ def listar_seguidores():
 def listar_likes():
     """
     POST:
-        devuelve una lista con el nombre en string de las paginas likeadas por el usuario.
+        muestra una lista con el nombre en string de las paginas likeadas por el usuario.
     """
     token, graph = seleccion_token('consumidor_cuenta')
     likes = graph.get_connections(id="me", connection_name="likes")
@@ -325,7 +325,9 @@ def obtener_id_post(numero_posteo, id_publicacion):
         id_publicacion debe ser una lista con las id de las publicaciones
         ubicadas en la posicion del número de post.
     POST:
-        devuelve el identificador del objeto en cuestion como IDUSUARIO_IDPOST.
+        devuelve el identificador, tipo str, del objeto en cuestion como
+        IDUSUARIO_IDPOST para uso en acciones de facebook.
+        IDPOST para uso en acciones de instagram.
     """
 
     for i in range(len(id_publicacion)):
@@ -481,6 +483,13 @@ def obtener_id_comentario(diccionario_comentarios):
 
 
 def validar_rango(valor, rango):
+    """
+    PRE:
+        valor debe ser un str, rango debe ser un int.
+    POST:
+        Tras verificar que valor sea un número dentro del rango permitido,
+        lo devuelve manteniendo el mismo tipo de dato.
+    """
     while not valor.isnumeric() or int(valor) < 0 or int(valor) > rango:
         valor = input("Opción no válida. Por favor vuelva a ingresar: ")
 
@@ -527,7 +536,7 @@ def subir_imagen_servidor():
 def mostrar_informacion_basica():
     """
     POST:
-        visualiza la informacion del atributo seleccionado
+        visualiza la información básica del usuario.
     """
     informacion_usuario_ig = obtener_informacion_cuenta_ig()
     atributos_usuario = list(informacion_usuario_ig.keys())
@@ -542,7 +551,7 @@ def visualizar_post_publicados_ig():
     """
     POST:
         Visualiza los post publicados de la siguiente manera:
-        numero del posteo, id del posteo, link del posteo, cantidad de likes y cantidad comentarios
+        numero de posteo, mensaje del posteo, link del mismo, cantidad de likes y comentarios
     """
     lista_id_post = []
     post_publicados = obtener_post_publicados_ig()
@@ -557,10 +566,29 @@ def visualizar_post_publicados_ig():
     return lista_id_post
 
 
+def mostrar_comentarios():
+    """
+    POST:
+        Muestra los comentarios del post seleccionado, en caso de no tenerlos
+        mostrará una leyenda expecificándolo.
+    """
+    token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
+    tupla = obtener_informacion_post_ig()
+    diccionario_comentarios = tupla[1]
+    existe = verificar_existencia_comentario(diccionario_comentarios)
+    if existe:
+        for elementos in diccionario_comentarios.keys():
+            print('Comentario N.{}: {}'.format(elementos, diccionario_comentarios[elementos][0]))
+    
+    else:
+        print("El post seleccionado no contiene comentarios existentes para mostrar.")
+
+
 def realizar_comentario():
     """
     POST:
-        Crea un nuevo comentario en el post seleccionado.
+        Crea un nuevo comentario en el post seleccionado e informa
+        el resultado de la acción.
     """
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
     id_publicacion = visualizar_post_publicados_ig()
@@ -639,14 +667,19 @@ def visualizar_insights_post():
 
     id_post = obtener_id_post(int(eleccion), id_publicacion)
     insights = ['impressions', 'reach', 'engagement', 'saved']
+    try:
+        for elementos in insights:
+            insights_media = requests.get(
+                "https://graph.facebook.com/v9.0/" + id_post + "/insights?metric=" +
+                elementos + "&access_token=" + token_empresarial).json()
+            print('el atributo "{0}" del post es {1} ({2})'.format(
+                insights_media['data'][0]['title'], insights_media['data'][0]['values'][0]['value'],
+                insights_media['data'][0]['description']))
 
-    for elementos in insights:
-        insights_media = requests.get(
-            "https://graph.facebook.com/v9.0/" + id_post + "/insights?metric=" +
-            elementos + "&access_token=" + token_empresarial).json()
-        print('el atributo "{0}" del post es {1} ({2})'.format(
-            insights_media['data'][0]['title'], insights_media['data'][0]['values'][0]['value'],
-            insights_media['data'][0]['description']))
+    except KeyError:
+        print(
+            "No se puede obtener insights del post seleccionado debido a que el mismo fue publicado "
+            "anteriormente a que la cuenta se haga profesional.\nVuelva a intentarlo con un post más reciente.")
 
 
 def visualizar_post_hashtag():
@@ -683,7 +716,7 @@ def visualizar_post_hashtag():
 def postear_imagen_ig():
     """
     POST:
-        Postea una foto en instagram
+        Postea una foto en instagram e informa el resultado de la acción.
     """
     token_empresarial = seleccion_token('empresarial_cuenta', token_solo=True)
     informacion = obtener_informacion_cuenta_ig()
@@ -703,10 +736,6 @@ def postear_imagen_ig():
     else:
         print("Ups! Algo ha salido mal.")
 
-
-#main
-def main():
-    # token: en función seleccion_token
 
 if __name__ == "__main__":
     main()
