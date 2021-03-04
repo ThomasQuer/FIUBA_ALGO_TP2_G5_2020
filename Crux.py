@@ -172,7 +172,8 @@ def chatbot():
 
     while seguir:
         seguir = capturar_peticiones(nombre, bot, seguir)
-
+        print('¿Desea lo ayude en algo más? Puede ingresar "menú" para continuar o "salir" para despedirnos.')
+        
     log("Fin de la charla.")
 
 
