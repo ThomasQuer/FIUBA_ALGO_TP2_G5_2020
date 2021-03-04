@@ -33,6 +33,7 @@ def capturar_peticiones(nombre, bot, seguir):
         Al finalizar devolverá seguir que indicará la continuación o
         finalización del programa.
     """
+    continuar = '¿Desea lo ayude en algo más? Puede ingresar "menú" para continuar o "salir" para despedirnos.\n'
     peticion = input(nombre + ": ")
     log(
         time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
@@ -51,24 +52,29 @@ def capturar_peticiones(nombre, bot, seguir):
             listar_likes()  #10
         else:  #1
             ver_posts()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("existentes") != -1:
         if (str(respuesta).lower()).find("actualizar") != -1:  #3
             actualizar_posteo()
         else:  #2
             dar_like_posteo()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("subamos") != -1:
         if (str(respuesta).lower()).find("foto") != -1:  #5
             subir_foto()
         else:  #4
             subir_posteo()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("amigos") != -1:  #6
         listar_amigos()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("datos") != -1:  #7
         actualizar_datos_pagina()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("comentar") != -1:
         if (str(respuesta).lower()).find("respondido") != -1:  #15
@@ -79,27 +85,35 @@ def capturar_peticiones(nombre, bot, seguir):
             mostrar_comentarios()
         else:  #8
             comentar_objeto()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("seguidores") != -1: #9
         listar_seguidores()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("cuenta") != -1:  #11
         mostrar_informacion_basica()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("publicados") != -1:  #12
         visualizar_post_publicados_ig()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("borrado") != -1:  #16
         borrar_comentario()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("alcance") != -1:  #17
         visualizar_insights_post()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("hashtag") != -1:  #18
         visualizar_post_hashtag()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("día") != -1:  #19
         postear_imagen_ig()
+        print(continuar)
 
     elif (str(respuesta).lower()).find("menú") != -1:
         mostrar_menu()
@@ -172,8 +186,7 @@ def chatbot():
 
     while seguir:
         seguir = capturar_peticiones(nombre, bot, seguir)
-        print('¿Desea lo ayude en algo más? Puede ingresar "menú" para continuar o "salir" para despedirnos.')
-        
+
     log("Fin de la charla.")
 
 
