@@ -3,7 +3,7 @@ Crux es un asistente para las redes sociales de Facebook e Instagram.
 Para consultar al asistente Crux desde la terminal debe ejecutarse Crux.py.
 Las consultas a través de Messenger deben realizarse ejecutando chatbot.py y por medio del canal de mensajes en la página de facebook 'Crux Bot Página'. En el caso de realizar la consulta por esta vía al ejecutar chatbot.py es necesario se genere un túnel activo para la conexión entre el localhost y la aplicación.
 
-A continuación se detallan los archivos presentados:
+A continuación se detallan los archivos presentados y se deja adjunto un diagrama esquemático del trabajo.
 
 # Crux.py (Salida en terminal)
 Crea al chatbot 'Crux', su aprendizaje es mediante archivos extensión .txt ubicados en la carpeta 'training_data'. La conversación realizada con el usuario se almacena en un archivo extensión .log con fecha y horario integrado. Muestra menú de opciones al empezar, luego responde a las entradas realizadas a través del teclado por el usuario.
