@@ -4,6 +4,11 @@ import requests
 import re
 import base64
 
+TOKEN_CUENTA_EMPRESARIAL = 'EAAPQlFICfVYBAHQTuF4SA84zmZBZCWZAdJH7qIeAvL6JRYY2gZCsIwwhua67QHtVYJFCOpa3sLpN2lwkwddmIqy8ZCfejRaeReWcExZCtDzaGW6ifnWrwXlD1DZAS36T5pyYSRujfLxNcNDZBZBeA9PqZAVOzHGNkeYvAhbSKUvDsbyAZDZD'
+TOKEN_PAGINA_EMPRESARIAL = 'EAAPQlFICfVYBAGksuFWsbDomJ5DFFYuL4MQ5gzIKYDXVfsJRzCk9uoNK9hZCcnDSdiDiDz5Y4HFvO1G7r63Jnx1sZA5bj3cT9pQVAeyUdMUaVd6VqX7BPMztN8jYDrqdIN7fIeYc0ZBwEKZB9ZCZCryTZAtmXFrJua76OPJZC8bYLwZDZD'
+TOKEN_CUENTA_CONSUMIDOR = 'EAADBGgWWrIABAOCBW4316mP4J3D5iqZAcEQ48wKBrftnoOFnb452KPO4wdlfpN5MAWu8h3DGyPdqZCLMjUgH9A6nJLZASMnnxQZCHwELkM47biGgc3WJbkXLZAxOMknHblPJLvnZCsgwtfqoagitQaY0gHpRoxDbp2o56xWDZBDNwZDZD'
+TOKEN_PAGINA_CONSUMIDOR = 'EAADBGgWWrIABAMXUFHlijThaTleKULX1yFhNPZCilHQipyAzdMZBir14OI8C981hIsyvpiidZBR3FpZAC2XoAkZAgvZCaf4UFf2PsfG3bzKBYPGWEZAnS9JhIKKZCZAYNL1TaEzjJbOzucssde7kny7zz1pttFZBtX9oUbobmT9GRRfwZDZD'
+
 
 def mostrar_menu():
     """
@@ -92,18 +97,21 @@ def dar_like_posteo(eleccion):
     # Se selecciona token de pagina desde una app empresarial y se utiliza api
     token, graph = seleccion_token("empresarial_pagina")
     # Se solicita id del posteo a dar like
-    eleccion = list(eleccion)
+    eleccion = list(eleccion.upper())
     eleccion.remove("N")
     eleccion.remove(":")
     eleccion = "".join(eleccion)
-    identificador = generar_identificador(int(eleccion), id_publicacion)
-    # Se utiliza la api para dar like al posteo y se imprime por pantalla el resultado
-    darlike = graph.put_like(object_id=identificador)
-    if darlike:
-        linea = "Se ha dado like al posteo."
+    try:
+        identificador = generar_identificador(int(eleccion), id_publicacion)
+        # Se utiliza la api para dar like al posteo y se imprime por pantalla el resultado
+        darlike = graph.put_like(object_id=identificador)
+        if darlike:
+            linea = "Se ha dado like al posteo."
 
-    else:
-        linea = "Hubo un problema, intente nuevamente."
+        else:
+            linea = "Hubo un problema, intente nuevamente."
+    except UnboundLocalError:
+        linea = "Ups! Parece que el número de post seleccionado no existe."
 
     return linea
 
@@ -121,18 +129,20 @@ def actualizar_posteo(dato):
     dato = dato.split(" ")
     eleccion = dato[0]
     dato[0] = ""
-    eleccion = list(eleccion)
+    eleccion = list(eleccion.upper())
     eleccion.remove("N")
     eleccion.remove("-")
     eleccion = "".join(eleccion)
     mensaje = " ".join(dato)
-    identificador = generar_identificador(int(eleccion), id_publicacion)
-    actualizacion = graph.put_object(parent_object=identificador, connection_name='', message=mensaje)
-    if actualizacion:
-        linea = "¡Modificación exitosa!"
-    else:
-        linea = "Hubo un problema, intente nuevamente."
-
+    try:
+        identificador = generar_identificador(int(eleccion), id_publicacion)
+        actualizacion = graph.put_object(parent_object=identificador, connection_name='', message=mensaje)
+        if actualizacion:
+            linea = "¡Modificación exitosa!"
+        else:
+            linea = "Hubo un problema, intente nuevamente."
+    except UnboundLocalError:
+        linea = "Ups! Parece que el número de post seleccionado no existe."
     return linea
 
 
@@ -207,13 +217,11 @@ def actualizar_datos_pagina(dato):
         Devuelve un string con la respuesta de la acción.
     """
     token = seleccion_token('empresarial_pagina', token_solo=True)
-    campos_lista = ['name', 'about', 'website', 'bio']
-    campos_string = ", ".join(campos_lista)
-    datos = requests.get(f"https://graph.facebook.com/me?fields={campos_string}&access_token={token}")
+    campos_lista = ['name', 'about', 'website']
     dato = dato.split(" ")
     eleccion = dato[0]
     dato[0] = ""
-    eleccion = list(eleccion)
+    eleccion = list(eleccion.upper())
     eleccion.remove("A")
     eleccion.remove(":")
     eleccion = "".join(eleccion)
@@ -222,13 +230,15 @@ def actualizar_datos_pagina(dato):
     for i in range(len(campos_lista)):
         if int(eleccion)-1 == i:
             campo = campos_lista[i]
-
-    accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')
-    if accion.json()['success']:
-        linea = 'Se han realizado los cambios.'
-    else:
-        linea = 'Ha surgido un problema, intente nuevamente.'
-
+    try:
+        accion = requests.post(f'https://graph.facebook.com/me?{campo}={modificacion}&access_token={token}')
+        if accion.json()['success']:
+            linea = 'Se han realizado los cambios.'
+        else:
+            linea = 'Ha surgido un problema, intente nuevamente.'
+    except UnboundLocalError:
+        linea = 'Ups!, parece que sólo tengo tres opciones de cambio.'
+    
     return linea
 
 
@@ -246,18 +256,21 @@ def comentar_objeto(dato):
     dato = dato.split(" ")
     eleccion = dato[0]
     dato[0] = ""
-    eleccion = list(eleccion)
+    eleccion = list(eleccion.upper())
     eleccion.remove("C")
     eleccion.remove("-")
     eleccion = "".join(eleccion)
     mensaje = " ".join(dato)
-    identificador = generar_identificador(int(eleccion), id_publicacion)
-    comentario = graph.put_object(parent_object=identificador, connection_name='comments', message=mensaje)
-    if comentario:
-        linea = "Su comentario ha sido exitoso."
-    else:
-        linea = "Ha ocurrido un error, intente nuevamente."
-
+    try:
+        identificador = generar_identificador(int(eleccion), id_publicacion)
+        comentario = graph.put_object(parent_object=identificador, connection_name='comments', message=mensaje)
+        if comentario:
+            linea = "Su comentario ha sido exitoso."
+        else:
+            linea = "Ha ocurrido un error, intente nuevamente."
+    except UnboundLocalError:
+        linea = "Ups! Parece que el número de post seleccionado no existe."
+    
     return linea
 
 
@@ -303,13 +316,13 @@ def seleccion_token(tipo_token, token_solo=False):
         del tipo 'facebook.GraphAPI' cuando token_solo = False.
     """
     if tipo_token == "empresarial_cuenta":
-        token = 'EAAPQlFICfVYBAHQTuF4SA84zmZBZCWZAdJH7qIeAvL6JRYY2gZCsIwwhua67QHtVYJFCOpa3sLpN2lwkwddmIqy8ZCfejRaeReWcExZCtDzaGW6ifnWrwXlD1DZAS36T5pyYSRujfLxNcNDZBZBeA9PqZAVOzHGNkeYvAhbSKUvDsbyAZDZD'
+        token = TOKEN_CUENTA_EMPRESARIAL
     elif tipo_token == "empresarial_pagina":
-        token = 'EAAPQlFICfVYBAGksuFWsbDomJ5DFFYuL4MQ5gzIKYDXVfsJRzCk9uoNK9hZCcnDSdiDiDz5Y4HFvO1G7r63Jnx1sZA5bj3cT9pQVAeyUdMUaVd6VqX7BPMztN8jYDrqdIN7fIeYc0ZBwEKZB9ZCZCryTZAtmXFrJua76OPJZC8bYLwZDZD'
+        token = TOKEN_PAGINA_EMPRESARIAL
     elif tipo_token == "consumidor_cuenta":
-        token = 'EAADBGgWWrIABAOCBW4316mP4J3D5iqZAcEQ48wKBrftnoOFnb452KPO4wdlfpN5MAWu8h3DGyPdqZCLMjUgH9A6nJLZASMnnxQZCHwELkM47biGgc3WJbkXLZAxOMknHblPJLvnZCsgwtfqoagitQaY0gHpRoxDbp2o56xWDZBDNwZDZD'
+        token = TOKEN_CUENTA_CONSUMIDOR
     elif tipo_token == "consumidor_pagina":
-        token = 'EAADBGgWWrIABAMXUFHlijThaTleKULX1yFhNPZCilHQipyAzdMZBir14OI8C981hIsyvpiidZBR3FpZAC2XoAkZAgvZCaf4UFf2PsfG3bzKBYPGWEZAnS9JhIKKZCZAYNL1TaEzjJbOzucssde7kny7zz1pttFZBtX9oUbobmT9GRRfwZDZD'
+        token = TOKEN_PAGINA_CONSUMIDOR
     graph = facebook.GraphAPI(token)
     if not token_solo:
         return token, graph
@@ -407,6 +420,4 @@ def limpiar_fecha(dato):
     formato_fecha = f"{dia}/{mes}/{anio}  {tiempo}"
 
     return formato_fecha
-
-
 
