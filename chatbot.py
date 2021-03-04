@@ -1,6 +1,5 @@
 import os
 import time
-
 import json
 from flask import Flask, request
 from bot import Bot
@@ -107,48 +106,44 @@ def actions(text_input, response_text, bot, user_id):
     POST:
         Al encontrarse con una palabra clave realiza la acción correspondiente
     """
+    question = "¿Puedo ayudarte en algo más?"
+
     if (response_text.lower()).find("menú") != -1:
         menu = mostrar_menu()
         bot.send_text_message(user_id, menu)
 
-    elif (response_text.lower()).find("listando") != -1:
-        if (response_text.lower()).find("seguís") != -1:  # Opción 10
-            pages = listar_likes()
-            bot.send_text_message(user_id, pages)
-        
-        else:  # Opción 1
-            tupla = ver_posts()
-            posts = tupla[1]
-            posts = "".join(posts)
-            bot.send_text_message(user_id, posts)
-
     elif (response_text.lower()).find("existentes") != -1:
-        if (response_text.lower()).find("actualizar") != -1:  # Acá corro la opción 3
+        if (response_text.lower()).find("actualizar") != -1:  # Opción 3
             tupla = ver_posts()
             posts = tupla[1]  # Listado de posteos
             posts = "".join(posts)
             bot.send_text_message(user_id, posts)
-            requirement = 'Indique el número de post que desea actualizar con el siguiente formato: "N-(número de post) (mensaje)" Ej: N-5 Actualización'
+            requirement = (
+                'Indique el número de post que desea actualizar con el siguiente formato: '
+                '"N-(número de post) (mensaje)" Ej: N-5 Actualización')
             bot.send_text_message(user_id, requirement)
 
-        else:  # Acá corro la opción 2
+        else:  # Opción 2
             tupla = ver_posts()
             posts = tupla[1]
             posts = "".join(posts)
             bot.send_text_message(user_id, posts)
-            requirement = 'Indique el número de post al que desea darle like con el siguiente formato: "N:(número de post)" Sin espacio. Ej: N:4'
+            requirement = (
+                'Indique el número de post al que desea darle like con el siguiente formato: '
+                '"N:(número de post)" Sin espacio. Ej: N:4')
             bot.send_text_message(user_id, requirement)
 
     elif (response_text.lower()).find("subamos") != -1:  # Opción 4
-        requirement = 'Ingresá el mensaje del posteo de la siguiente forma "M:(mensaje)" Sin espacio. Ej M:Posteo nuevo'
+        requirement = (
+            'Ingresá el mensaje del posteo de la siguiente forma "M:(mensaje)" Sin espacio. '
+            'Ej M:Posteo nuevo')
         bot.send_text_message(user_id, requirement)
 
-    elif (response_text.lower()).find("amigos") != -1:  # Opción 6
-        friends = listar_amigos()
-        bot.send_text_message(user_id, friends)
-
     elif (response_text.lower()).find("datos") != -1:  # Opción 7
-        requirement = 'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\nIndique el que desee actualizar con el siguiente formato: "A:(número de opción) (mensaje)" Ej: A:2 Esta es mi nueva info'
+        requirement = (
+            'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\n'
+            'Indique el que desee actualizar con el siguiente formato: '
+            '"A:(número de opción) (mensaje)" Ej: A:2 Esta es mi nueva info')
         bot.send_text_message(user_id, requirement)
 
     elif (response_text.lower()).find("comentar") != -1:  # Opción 8
@@ -156,32 +151,58 @@ def actions(text_input, response_text, bot, user_id):
         posts = tupla[1]
         posts = "".join(posts)
         bot.send_text_message(user_id, posts)
-        requirement = 'Indique el número de post que desea comentar con el siguiente formato: "C-(número de post) (mensaje)" Ej: C-2 Nuevo comentario'
+        requirement = (
+            'Indique el número de post que desea comentar con el siguiente formato: '
+            '"C-(número de post) (mensaje)" Ej: C-2 Nuevo comentario')
         bot.send_text_message(user_id, requirement)
 
+    elif (response_text.lower()).find("listando") != -1:
+        if (response_text.lower()).find("seguís") != -1:  # Opción 10
+            likes = listar_likes()
+            bot.send_text_message(user_id, likes)
+            bot.send_text_message(user_id, question)
+        
+        else:  # Opción 1
+            tupla = ver_posts()
+            posts = tupla[1]
+            posts = "".join(posts)
+            bot.send_text_message(user_id, posts)
+            bot.send_text_message(user_id, question)
+
+    elif (response_text.lower()).find("amigos") != -1:  # Opción 6
+        friends = listar_amigos()
+        bot.send_text_message(user_id, friends)
+        bot.send_text_message(user_id, question)
+    
     elif (response_text.lower()).find("seguidores") != -1:  # Opción 9
         followers = listar_seguidores()
         bot.send_text_message(user_id, followers)
+        bot.send_text_message(user_id, question)
 
     elif text_input.find("A:") != -1:
         result = actualizar_datos_pagina(text_input)
         bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
 
     elif text_input.find("M:") != -1:
         result = subir_posteo(text_input)
         bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
 
     elif text_input.find("N:") != -1:
         result = dar_like_posteo(text_input)
         bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
 
     elif text_input.find("N-") != -1:
         result = actualizar_posteo(text_input)
         bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
 
     elif text_input.find("C-") != -1:
         result = comentar_objeto(text_input)
         bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
 
 
 def log(message):
@@ -198,3 +219,4 @@ def log(message):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
