@@ -16,8 +16,11 @@ from chatterbot import filters
 from TP2_G5 import mostrar_menu, ver_posts, dar_like_posteo, actualizar_posteo
 from TP2_G5 import subir_posteo, subir_foto, listar_amigos, actualizar_datos_pagina
 from TP2_G5 import comentar_objeto, listar_seguidores, listar_likes
-from TP2_G5 import visualizar_informacion_cuenta_ig, mostrar_informacion_basica_ig, visualizar_post_publicados_ig, visualizar_informacion_post_seleccionado_ig
-from TP2_G5 import visualizar_insights_post, visualizar_comentarios_post_ig, borrar_comentario, responder_comentario, visualizar_post_hashtag, postear_imagen_ig
+from TP2_G5 import mostrar_informacion_basica, visualizar_post_publicados_ig
+from TP2_G5 import mostrar_comentarios, realizar_comentario, responder_comentario
+from TP2_G5 import borrar_comentario, visualizar_insights_post, visualizar_post_hashtag
+from TP2_G5 import postear_imagen_ig
+
 
 def capturar_peticiones(nombre, bot, seguir):
     """
@@ -42,70 +45,63 @@ def capturar_peticiones(nombre, bot, seguir):
         time.strftime("%d/%m/%Y, %H:%M:%S", time.localtime()) +
         ", Crux, " + '"' + str(respuesta) + '"'
         )
-    if (str(respuesta).lower()).find("instagram") != -1:
 
-        if (str(respuesta).lower()).find("cuenta") != -1:
-            visualizar_informacion_cuenta_ig()
+    if (str(respuesta).lower()).find("listando") != -1:
+        if (str(respuesta).lower()).find("seguís") != -1:
+            listar_likes()  #10
+        else:  #1
+            ver_posts()
 
-        elif (str(respuesta).lower()).find("atributos") != -1:
-            mostrar_informacion_basica_ig()
+    elif (str(respuesta).lower()).find("existentes") != -1:
+        if (str(respuesta).lower()).find("actualizar") != -1:  #3
+            actualizar_posteo()
+        else:  #2
+            dar_like_posteo()
 
-        elif (str(respuesta).lower()).find("comentario") != -1:
-            if (str(respuesta).lower()).find("mostra") != -1:           
-                visualizar_comentarios_post_ig()
-            elif (str(respuesta).lower()).find("borra") != -1:
-                borrar_comentario()
-            else:
-                responder_comentario()
+    elif (str(respuesta).lower()).find("subamos") != -1:
+        if (str(respuesta).lower()).find("foto") != -1:  #5
+            subir_foto()
+        else:  #4
+            subir_posteo()
 
-        elif (str(respuesta).lower()).find("hashtag") != -1:
-            visualizar_post_hashtag()
+    elif (str(respuesta).lower()).find("amigos") != -1:  #6
+        listar_amigos()
 
-        elif (str(respuesta).lower()).find("imagen") != -1:      
-            postear_imagen_ig()
+    elif (str(respuesta).lower()).find("datos") != -1:  #7
+        actualizar_datos_pagina()
 
-        elif (str(respuesta).lower()).find("post") != -1:
-            if (str(respuesta).lower()).find("insights") != -1:
-                visualizar_insights_post()
-            elif (str(respuesta).lower()).find("información") != -1:
-                visualizar_informacion_post_seleccionado_ig()
-            else:
-                visualizar_post_publicados_ig()
-
-
-    else:
-        if (str(respuesta).lower()).find("listando") != -1:
-            if (str(respuesta).lower()).find("seguís") != -1:
-                listar_likes()
-                
-            else:
-                ver_posts()
-
-        elif (str(respuesta).lower()).find("existentes") != -1:
-            if (str(respuesta).lower()).find("actualizar") != -1:
-                actualizar_posteo()
-            else:
-                dar_like_posteo()
-
-        elif (str(respuesta).lower()).find("subamos") != -1:
-            if (str(respuesta).lower()).find("foto") != -1:
-                subir_foto()
-            else:
-                subir_posteo()
-
-        elif (str(respuesta).lower()).find("amigos") != -1:
-            listar_amigos()
-
-        elif (str(respuesta).lower()).find("datos") != -1:
-            actualizar_datos_pagina()
-
-        elif (str(respuesta).lower()).find("comentar") != -1:
+    elif (str(respuesta).lower()).find("comentar") != -1:
+        if (str(respuesta).lower()).find("respondido") != -1:  #15
+            responder_comentario()
+        elif (str(respuesta).lower()).find("necesitaré") != -1:  #14
+            realizar_comentario()
+        elif (str(respuesta).lower()).find("seleccionar") != -1:  #13
+            mostrar_comentarios()
+        else:  #8
             comentar_objeto()
 
-        elif (str(respuesta).lower()).find("seguidores") != -1:
-            listar_seguidores()
+    elif (str(respuesta).lower()).find("seguidores") != -1: #9
+        listar_seguidores()
 
-    if (str(respuesta).lower()).find("menú") != -1:
+    elif (str(respuesta).lower()).find("cuenta") != -1:  #11
+        mostrar_informacion_basica()
+
+    elif (str(respuesta).lower()).find("publicados") != -1:  #12
+        visualizar_post_publicados_ig()
+
+    elif (str(respuesta).lower()).find("borrado") != -1:  #16
+        borrar_comentario()
+
+    elif (str(respuesta).lower()).find("alcance") != -1:  #17
+        visualizar_insights_post()
+
+    elif (str(respuesta).lower()).find("hashtag") != -1:  #18
+        visualizar_post_hashtag()
+
+    elif (str(respuesta).lower()).find("día") != -1:  #19
+        postear_imagen_ig()
+
+    elif (str(respuesta).lower()).find("menú") != -1:
         mostrar_menu()
 
     elif (peticion.lower()).find("salir") != -1:
@@ -115,25 +111,21 @@ def capturar_peticiones(nombre, bot, seguir):
 
 
 def log(mensaje):
-
     """
     PRE: "mensaje" debe ser un string.
 
     POST: Creación del archivo log si no existiese,
         agrega la línea "mensaje".
     """
-
     with open("archivo.log", "a") as ptroArchivo:
         ptroArchivo.write(mensaje + "\n")
 
 
 def chatbot():
-
     """
     POST: Tras saludar al usuario responde las preguntas hechas
         mediante el aprendizaje previo.
     """
-
     bot = ChatBot(
         'Crux', read_only=True,
         logic_adapters=[
@@ -184,13 +176,6 @@ def chatbot():
     log("Fin de la charla.")
 
 
-def main():
-
-    """
-    POST: Realiza el llamado a la función "chatbot"
-    """
-
+if __name__ == "__main__":
     chatbot()
 
-
-main()
