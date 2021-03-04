@@ -112,6 +112,31 @@ def actions(text_input, response_text, bot, user_id):
         menu = mostrar_menu()
         bot.send_text_message(user_id, menu)
 
+    elif text_input.find("A:") != -1:
+        result = actualizar_datos_pagina(text_input)
+        bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
+
+    elif text_input.find("M:") != -1:
+        result = subir_posteo(text_input)
+        bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
+
+    elif text_input.find("N:") != -1:
+        result = dar_like_posteo(text_input)
+        bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
+
+    elif text_input.find("N-") != -1:
+        result = actualizar_posteo(text_input)
+        bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
+
+    elif text_input.find("C-") != -1:
+        result = comentar_objeto(text_input)
+        bot.send_text_message(user_id, result)
+        bot.send_text_message(user_id, question)
+
     elif (response_text.lower()).find("existentes") != -1:
         if (response_text.lower()).find("actualizar") != -1:  # Opción 3
             tupla = ver_posts()
@@ -140,6 +165,7 @@ def actions(text_input, response_text, bot, user_id):
         bot.send_text_message(user_id, requirement)
 
     elif (response_text.lower()).find("datos") != -1:  # Opción 7
+        print(response_text)
         requirement = (
             'Los campos actuales son:\n1.Name\n2.About\n3.Website\n\n'
             'Indique el que desee actualizar con el siguiente formato: '
@@ -177,31 +203,6 @@ def actions(text_input, response_text, bot, user_id):
     elif (response_text.lower()).find("seguidores") != -1:  # Opción 9
         followers = listar_seguidores()
         bot.send_text_message(user_id, followers)
-        bot.send_text_message(user_id, question)
-
-    elif text_input.find("A:") != -1:
-        result = actualizar_datos_pagina(text_input)
-        bot.send_text_message(user_id, result)
-        bot.send_text_message(user_id, question)
-
-    elif text_input.find("M:") != -1:
-        result = subir_posteo(text_input)
-        bot.send_text_message(user_id, result)
-        bot.send_text_message(user_id, question)
-
-    elif text_input.find("N:") != -1:
-        result = dar_like_posteo(text_input)
-        bot.send_text_message(user_id, result)
-        bot.send_text_message(user_id, question)
-
-    elif text_input.find("N-") != -1:
-        result = actualizar_posteo(text_input)
-        bot.send_text_message(user_id, result)
-        bot.send_text_message(user_id, question)
-
-    elif text_input.find("C-") != -1:
-        result = comentar_objeto(text_input)
-        bot.send_text_message(user_id, result)
         bot.send_text_message(user_id, question)
 
 
