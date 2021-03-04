@@ -20,9 +20,6 @@ Contiene los token de acceso de Facebook API y las funciones que interactuan con
 # Justificación.txt
 Respecto a lo solicitado en el trabajo práctico se agregan justificaciones de lo alcanzado en las funciones y las limitaciones encontradas.
 
-# bot.py
-Crea la clase que le permitirá a la función webhook, mediante el acceso a través de la api, recibir el mensaje del usuario y enviar la respuesta.
-
 # chatbot.py (Salida a través de messenger)
 Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
 
@@ -31,10 +28,10 @@ Llama a chatbot 'Crux' e importa a bot.py para hacer uso de su clase.
   
   La función log:
   Almacena la conversación entre el bot y el usuario.
- 
- # archivo.log
-Muestra el historial de la conversación establecida con el asistente.
 
+# bot.py
+Crea la clase que le permitirá a la función webhook, mediante el acceso a través de la api, recibir el mensaje del usuario y enviar la respuesta.
+ 
 # funciones_fb.py
 Contiene los token de acceso de Facebook API y las funciones que interactuan con Facebook e Instagram modificados de manera tal que puedan ser utilizados en la salida por Messenger.
 
@@ -68,7 +65,10 @@ Los dos links deberían mostrar “400”
 El link con terminación .ngrok.io será nuestro ‘Callback URL’ en Facebook developers. ‘Verify Token’ será 'cruxbot'.
 
   Problema encontrado: El link que ngrok otorga caduca una vez cerrada la terminal cmd. Al volver a abrirla y ejecutar chatboy.py se deberá volver a generar otro link ngrok (Volviendo a correr el comando ingresado arriba) que tendrá que ser modificado en la configuración de messenger en developers.facebook 'URL devolución de llamada'. De lo contrario chatbot.py no podrá devolver el mensaje respuesta al usuario.
-  
+
+ # archivo.log
+Muestra el historial de la conversación establecida con el asistente.
+
 # Bibliografía y Referencias
 Tutorial de uso de Facebook Graph API: https://towardsdatascience.com/how-to-use-facebook-graph-api-and-extract-data-using-python-1839e19d6999
 modulo python-facebook-api: https://pypi.org/project/python-facebook-api/
